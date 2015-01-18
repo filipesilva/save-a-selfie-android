@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('save-a-selfie', ['ionic', 'save-a-selfie.controllers', 'save-a-selfie.services'])
+angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps',
+  'save-a-selfie.controllers', 'save-a-selfie.services'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -49,26 +51,35 @@ angular.module('save-a-selfie', ['ionic', 'save-a-selfie.controllers', 'save-a-s
   })
 
   .state('tab.locate', {
-      url: '/locate',
-      views: {
-        'tab-locate': {
-          templateUrl: 'templates/tab-locate.html',
-          controller: 'Ctrl'
-        }
+    url: '/locate',
+    views: {
+      'tab-locate': {
+        templateUrl: 'templates/tab-locate.html',
+        controller: 'LocateCtrl as locate'
       }
-    })
+    }
+  })
 
   .state('tab.info', {
-      url: '/info',
-      views: {
-        'tab-info': {
-          templateUrl: 'templates/tab-info.html',
-          controller: 'Ctrl'
-        }
+    url: '/info',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/tab-info.html',
+        controller: 'Ctrl'
       }
-    });
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/photo');
 
+})
+
+.config(function(uiGmapGoogleMapApiProvider) {
+  uiGmapGoogleMapApiProvider.configure({
+    // TODO add api key
+    // key: 'your api key',
+    v: '3.17',
+    libraries: 'weather,geometry,visualization'
+  });
 });
