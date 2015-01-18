@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps',
+angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
   'save-a-selfie.controllers', 'save-a-selfie.services'
 ])
 
