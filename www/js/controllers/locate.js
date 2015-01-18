@@ -2,10 +2,42 @@ angular.module('save-a-selfie.controllers')
   .controller('LocateCtrl', function($rootScope, $cordovaGeolocation) {
     var view = this;
     view.map = {
-      zoom: 16
+      zoom: 16,
+      markers: [{
+        id: '1',
+        coords: {
+          latitude: 53.3442,
+          longitude: -6.2555
+        }
+      }, {
+        id: '2',
+        coords: {
+          latitude: 53.3580,
+          longitude: -6.2495
+        }
+      }, {
+        id: '3',
+        coords: {
+          latitude: 53.3495,
+          longitude: -6.2349
+        }
+      }, {
+        id: '4',
+        coords: {
+          latitude: 53.3371,
+          longitude: -6.2343
+        }
+      }, {
+        id: '5',
+        coords: {
+          latitude: 53.3386,
+          longitude: -6.2883
+        }
+      }]
     };
 
     // TODO handle missing geolocation permission, loading
+    // TODO make it watch position
     this.resolve = function() {
       $cordovaGeolocation
         .getCurrentPosition({
@@ -28,7 +60,7 @@ angular.module('save-a-selfie.controllers')
                 url: 'img/user-location-marker.png'
               }
             },
-            coords : {
+            coords: {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             }
@@ -39,7 +71,7 @@ angular.module('save-a-selfie.controllers')
 
     };
 
-    $rootScope.$on("$ionicView.enter", function(scopes, states) {
+    $rootScope.$on('$ionicView.enter', function(scopes, states) {
       view.resolve();
     });
   });

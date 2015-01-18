@@ -3,6 +3,10 @@
     <ui-gmap-google-map center="locate.map.center" zoom="locate.map.zoom">
       <ui-gmap-marker idKey="locate.map.user.id" coords="locate.map.user.coords" options="locate.map.user.options">
       </ui-gmap-marker>
+      <-- TODO use ui-gmap-windows to render many info windows instead -->
+      <ui-gmap-marker idKey="marker.id" coords="marker.coords" ng-repeat="marker in locate.map.markers">
+      </ui-gmap-marker>
     </ui-gmap-google-map>
+    <pre>{{view.map}}</pre>
   </ion-content>
 </ion-view>
