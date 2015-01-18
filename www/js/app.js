@@ -45,7 +45,7 @@ angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
     views: {
       'tab-photo': {
         templateUrl: 'templates/tab-photo.html',
-        controller: 'Ctrl'
+        controller: 'PhotoCtrl as photo'
       }
     }
   })

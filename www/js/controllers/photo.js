@@ -1,39 +1,11 @@
 angular.module('save-a-selfie.controllers')
-  .controller('LocateCtrl', function($rootScope, $cordovaGeolocation) {
+  .controller('PhotoCtrl', function($rootScope, $cordovaGeolocation) {
     var view = this;
     view.map = {
-      zoom: 13,
-      markers: [{
-        id: '1',
-        coords: {
-          latitude: 53.3442,
-          longitude: -6.2555
-        }
-      }, {
-        id: '2',
-        coords: {
-          latitude: 53.3580,
-          longitude: -6.2495
-        }
-      }, {
-        id: '3',
-        coords: {
-          latitude: 53.3495,
-          longitude: -6.2349
-        }
-      }, {
-        id: '4',
-        coords: {
-          latitude: 53.3371,
-          longitude: -6.2343
-        }
-      }, {
-        id: '5',
-        coords: {
-          latitude: 53.3386,
-          longitude: -6.2883
-        }
-      }]
+      zoom: 16,
+      options: {
+        draggable: false
+      }
     };
 
     // TODO handle missing geolocation permission, loading
