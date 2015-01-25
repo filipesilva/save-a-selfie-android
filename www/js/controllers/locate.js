@@ -1,5 +1,5 @@
 angular.module('save-a-selfie.controllers')
-  .controller('LocateCtrl', function($rootScope, $cordovaGeolocation) {
+  .controller('LocateCtrl', function($scope, $cordovaGeolocation) {
     var view = this;
     view.map = {
       zoom: 13,
@@ -39,6 +39,7 @@ angular.module('save-a-selfie.controllers')
     // TODO handle missing geolocation permission, loading
     // TODO make it watch position
     this.resolve = function() {
+      console.log('entered locate');
       $cordovaGeolocation
         .getCurrentPosition({
           timeout: 10000,
@@ -71,7 +72,7 @@ angular.module('save-a-selfie.controllers')
 
     };
 
-    $rootScope.$on('$ionicView.enter', function(scopes, states) {
+    $scope.$on('$ionicView.enter', function(scopes, states) {
       view.resolve();
     });
   });

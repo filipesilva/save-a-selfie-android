@@ -32,15 +32,16 @@ angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: "/tab",
+  .state('tabs', {
+    url: "/tabs",
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: "templates/tabs.html",
+    controller: "TabsCtrl as tabs"
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.photo', {
+  .state('tabs.photo', {
     url: '/photo',
     views: {
       'tab-photo': {
@@ -50,7 +51,7 @@ angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
     }
   })
 
-  .state('tab.locate', {
+  .state('tabs.locate', {
     url: '/locate',
     views: {
       'tab-locate': {
@@ -60,18 +61,17 @@ angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
     }
   })
 
-  .state('tab.info', {
+  .state('tabs.info', {
     url: '/info',
     views: {
       'tab-info': {
-        templateUrl: 'templates/tab-info.html',
-        controller: 'Ctrl'
+        templateUrl: 'templates/tab-info.html'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/photo');
+  $urlRouterProvider.otherwise('/tabs/info');
 
 })
 

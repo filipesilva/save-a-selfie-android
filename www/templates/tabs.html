@@ -6,17 +6,17 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
   <!-- Photo Tab -->
-  <ion-tab title="Photo" icon="ion-camera" href="#/tab/photo">
+  <ion-tab title="Photo" icon="ion-camera" ng-click="tabs.showPhotoOptions()">
     <ion-nav-view name="tab-photo"></ion-nav-view>
   </ion-tab>
 
   <!-- Locate Tab -->
-  <ion-tab title="Locate" icon="ion-earth" href="#/tab/locate">
+  <ion-tab title="Locate" icon="ion-earth" href="#/tabs/locate">
     <ion-nav-view name="tab-locate"></ion-nav-view>
   </ion-tab>
 
   <!-- Info Tab -->
-  <ion-tab title="Info" icon="ion-information-circled" href="#/tab/info">
+  <ion-tab title="Info" icon="ion-information-circled" href="#/tabs/info">
     <ion-nav-view name="tab-info"></ion-nav-view>
   </ion-tab>
 
