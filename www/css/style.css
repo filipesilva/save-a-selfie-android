@@ -4,3 +4,22 @@
 .angular-google-map-container {
   height: 400px;
 }
+
+#info-logos img {
+  width:100%;
+}
+
+.info-bubble {
+  border-radius: 15px;
+  background-color: #886aea;
+  padding: 30px 15px 30px 15px;
+  margin-top: 50px;
+  color: #FFF;
+  font-size: large;
+}
+
+.info-bubble img{
+  display: block;
+  float: right;
+  margin-top: -75px;
+}

@@ -28,4 +28,7 @@
     <feature name="Geolocation">
         <param name="id" value="org.apache.cordova.geolocation" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="id" value="org.apache.cordova.inappbrowser" />
+    </feature>
 </widget>
