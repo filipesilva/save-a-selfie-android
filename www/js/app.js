@@ -35,8 +35,7 @@ angular.module('save-a-selfie', ['ionic', 'uiGmapgoogle-maps', 'ngCordova',
   .state('tabs', {
     url: "/tabs",
     abstract: true,
-    templateUrl: "templates/tabs.html",
-    controller: "TabsCtrl as tabs"
+    templateUrl: "templates/tabs.html"
   })
 
   // Each tab has its own nav history stack:
