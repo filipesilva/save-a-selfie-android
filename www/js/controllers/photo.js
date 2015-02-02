@@ -1,7 +1,8 @@
 angular.module('save-a-selfie.controllers')
-  .controller('PhotoCtrl', function($scope, $ionicActionSheet, $cordovaCamera) {
+  .controller('PhotoCtrl', function($scope, $ionicActionSheet, CameraSrvc) {
     var view = this;
 
+    // TODO this seems to appear again after picking photo
     view.resolve = function() {
       $ionicActionSheet.show({
         titleText: 'Select image source',
@@ -13,25 +14,27 @@ angular.module('save-a-selfie.controllers')
         // TODO go back to previous state on cancel
         cancelText: 'Cancel',
         buttonClicked: function(index) {
-          view.takePhoto();
+          if (index === 0) {
+            view.takePhoto();
+          } else if (index === 1) {
+            view.pickFromGallery();
+          }
         }
       });
     };
 
-    // TODO refactor into service
     view.takePhoto = function() {
-      var options = {
-        quality: 100,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.PNG,
-        targetWidth: 400,
-        targetHeight: 400,
-        saveToPhotoAlbum: false
-      };
+      CameraSrvc.takePhoto()
+        .then(function(imageData) {
+          var image = document.getElementById('selfie');
+          image.src = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+          // error
+        });
+    };
 
-      $cordovaCamera.getPicture(options)
+    view.pickFromGallery = function() {
+      CameraSrvc.pickFromGallery()
         .then(function(imageData) {
           var image = document.getElementById('selfie');
           image.src = "data:image/jpeg;base64," + imageData;
