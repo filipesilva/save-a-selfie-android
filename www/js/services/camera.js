@@ -13,6 +13,7 @@ angular.module('save-a-selfie.services')
         encodingType: Camera.EncodingType.JPEG,
         targetWidth: 400,
         targetHeight: 400,
+        correctOrientation: true,
         saveToPhotoAlbum: false
       };
     };
