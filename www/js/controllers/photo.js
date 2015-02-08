@@ -4,7 +4,7 @@ angular.module('save-a-selfie.controllers')
 
     // TODO this seems to appear again after picking photo
     view.resolve = function() {
-      $ionicActionSheet.show({
+      var hideSheet = $ionicActionSheet.show({
         titleText: 'Select image source',
         buttons: [{
           text: 'Take photo'
@@ -19,6 +19,7 @@ angular.module('save-a-selfie.controllers')
           } else if (index === 1) {
             view.pickFromGallery();
           }
+          hideSheet();
         }
       });
     };
@@ -44,6 +45,8 @@ angular.module('save-a-selfie.controllers')
     };
 
     $scope.$on('$ionicView.enter', function(scopes, states) {
+      console.log(scopes);
+      console.log(states);
       view.resolve();
     });
   });
