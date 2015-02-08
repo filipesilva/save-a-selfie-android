@@ -1,8 +1,7 @@
 angular.module('save-a-selfie.controllers')
-  .controller('PhotoCtrl', function($scope, $ionicActionSheet, CameraSrvc) {
+  .controller('PhotoCtrl', function($scope, $ionicActionSheet, $ionicHistory, CameraSrvc) {
     var view = this;
 
-    // TODO this seems to appear again after picking photo
     view.resolve = function() {
       var hideSheet = $ionicActionSheet.show({
         titleText: 'Select image source',
@@ -11,8 +10,10 @@ angular.module('save-a-selfie.controllers')
         }, {
           text: 'Choose from existing'
         }],
-        // TODO go back to previous state on cancel
         cancelText: 'Cancel',
+        cancel: function() {
+          $ionicHistory.goBack();
+        },
         buttonClicked: function(index) {
           if (index === 0) {
             view.takePhoto();
@@ -45,8 +46,6 @@ angular.module('save-a-selfie.controllers')
     };
 
     $scope.$on('$ionicView.enter', function(scopes, states) {
-      console.log(scopes);
-      console.log(states);
       view.resolve();
     });
   });
