@@ -5,13 +5,19 @@ angular.module('save-a-selfie.services')
     CsvSrvc
   ) {
 
-    var csvToArray = function (data) {
+    var csvToArray = function(data) {
       return CsvSrvc.parse(data, '\t');
     };
 
-    var arrayToMarker = function (data) {
-      return data.map(function (element, index) {
-        if (element.length === 7){
+    var arrayToMarker = function(data) {
+      return data.filter(function(element) {
+          if (element.length === 7) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .map(function(element, index) {
           return {
             id: index,
             coords: {
@@ -24,15 +30,15 @@ angular.module('save-a-selfie.services')
             thumb: element[5],
             source: element[6],
           };
-        }
-      });
+        });
     };
 
     return {
       get: function() {
         var req = {
           method: 'GET',
-          url: apiUrl + '/wp-content/themes/magazine-child/getMapData.php',
+          url: apiUrl +
+            '/wp-content/themes/magazine-child/getMapData.php',
           transformResponse: [csvToArray, arrayToMarker]
         };
 

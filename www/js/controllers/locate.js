@@ -44,7 +44,8 @@ angular.module('save-a-selfie.controllers')
             latitude: initial.latitude,
             longitude: initial.longitude
           }
-        }
+        },
+        markers: []
       };
     };
 
