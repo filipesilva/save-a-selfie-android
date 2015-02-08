@@ -9,15 +9,18 @@ angular.module('save-a-selfie.services')
       return CsvSrvc.parse(data, '\t');
     };
 
-    var arrayToJson = function (data) {
-      return data.map(function (element) {
+    var arrayToMarker = function (data) {
+      return data.map(function (element, index) {
         if (element.length === 7){
           return {
-            pic: element[0],
+            id: index,
+            coords: {
+              latitude: parseFloat(element[3]),
+              longitude: parseFloat(element[4])
+            },
+            image: element[0],
             caption: element[1],
             type: element[2],
-            latitude: element[3],
-            longitude: element[4],
             thumb: element[5],
             source: element[6],
           };
@@ -30,7 +33,7 @@ angular.module('save-a-selfie.services')
         var req = {
           method: 'GET',
           url: apiUrl + '/wp-content/themes/magazine-child/getMapData.php',
-          transformResponse: [csvToArray, arrayToJson]
+          transformResponse: [csvToArray, arrayToMarker]
         };
 
         return $http(req);

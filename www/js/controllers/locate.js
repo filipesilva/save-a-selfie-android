@@ -44,39 +44,7 @@ angular.module('save-a-selfie.controllers')
             latitude: initial.latitude,
             longitude: initial.longitude
           }
-        },
-        // TODO load markers from backend
-        markers: [{
-          id: '1',
-          coords: {
-            latitude: 53.3442,
-            longitude: -6.2555
-          }
-        }, {
-          id: '2',
-          coords: {
-            latitude: 53.3580,
-            longitude: -6.2495
-          }
-        }, {
-          id: '3',
-          coords: {
-            latitude: 53.3495,
-            longitude: -6.2349
-          }
-        }, {
-          id: '4',
-          coords: {
-            latitude: 53.3371,
-            longitude: -6.2343
-          }
-        }, {
-          id: '5',
-          coords: {
-            latitude: 53.3386,
-            longitude: -6.2883
-          }
-        }]
+        }
       };
     };
 
@@ -87,35 +55,38 @@ angular.module('save-a-selfie.controllers')
       $q.when($ionicLoading.show({
           template: 'Finding your location...'
         }))
-        // wait for gmaps to be ready
+        // wait for all three promises before hiding loading box
         .then(function() {
-          return uiGmapIsReady.promise();
-        })
-        // get position
-        .then(function() {
-          return $cordovaGeolocation
+          return $q.all([
+            // wait for gmaps to be ready
+            uiGmapIsReady.promise(),
+            // get markers
+            MarkersSrvc.get()
+            .then(function(response) {
+              view.map.markers = response.data;
+            }),
+            // get current position
+            $cordovaGeolocation
             .getCurrentPosition({
               timeout: 10000,
               enableHighAccuracy: false
-            });
+            })
+            // update map
+            .then(function(position) {
+              view.map.center = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+              };
+              view.map.user.coords = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+              };
+            })
+          ]);
         })
-        // update gmaps
-        .then(function(position) {
-          view.map.center = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          };
-          view.map.user = {
-            coords: {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            }
-          };
-        }, function(err) {
-          // error
-        })
+        // TODO catch and handle error
         // hide loading message
-        .finally(function(response) {
+        .finally(function() {
           $ionicLoading.hide();
         });
     };
