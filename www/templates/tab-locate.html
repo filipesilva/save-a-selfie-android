@@ -4,8 +4,18 @@
       <ui-gmap-marker idKey="locate.map.user.id" coords="locate.map.user.coords" options="locate.map.user.options">
       </ui-gmap-marker>
       <-- TODO use ui-gmap-windows to render many info windows instead -->
-      <ui-gmap-marker idKey="marker.id" coords="marker.coords" ng-repeat="marker in locate.map.markers">
-      </ui-gmap-marker>
+        <ui-gmap-marker idKey="marker.id" coords="marker.coords" ng-repeat="marker in locate.map.markers">
+        </ui-gmap-marker>
     </ui-gmap-google-map>
+    <div class="padding">
+      <div class="info-bubble">
+        <img src="img/save-a-selfie-character.png" width="75" />
+        <p>
+          Tap <b>Photo</b> above to take or retrieve a photo,
+          <b>Locate</b> to find a defibritlator and view photos,
+          or <b>Info</b> to learn about the project.
+        </p>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
