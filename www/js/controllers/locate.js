@@ -4,7 +4,8 @@ angular.module('save-a-selfie.controllers')
     $q,
     $ionicLoading,
     $cordovaGeolocation,
-    uiGmapIsReady
+    uiGmapIsReady,
+    MarkersSrvc
   ) {
     var view = this;
 
@@ -82,7 +83,7 @@ angular.module('save-a-selfie.controllers')
     // TODO handle missing geolocation permission
     // TODO make it watch position?
     view.enter = function() {
-      // show loading message
+      //show loading message
       $q.when($ionicLoading.show({
           template: 'Finding your location...'
         }))
