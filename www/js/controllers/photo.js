@@ -29,7 +29,7 @@ angular.module('save-a-selfie.controllers')
           } else if (index === 1) {
             view.pickFromGallery();
           }
-          hideSheet();
+          return true;
         }
       });
     };
