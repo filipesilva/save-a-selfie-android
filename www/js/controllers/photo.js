@@ -1,6 +1,15 @@
 angular.module('save-a-selfie.controllers')
-  .controller('PhotoCtrl', function($scope, $ionicActionSheet, $ionicHistory, CameraSrvc) {
+  .controller('PhotoCtrl', function(
+    $scope,
+    $ionicActionSheet,
+    $ionicHistory,
+    CameraSrvc
+  ) {
     var view = this;
+
+    $scope.$on('$ionicView.enter', function(scopes, states) {
+      view.resolve();
+    });
 
     view.resolve = function() {
       var hideSheet = $ionicActionSheet.show({
@@ -44,8 +53,4 @@ angular.module('save-a-selfie.controllers')
           // error
         });
     };
-
-    $scope.$on('$ionicView.enter', function(scopes, states) {
-      view.resolve();
-    });
   });
