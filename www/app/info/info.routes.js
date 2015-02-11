@@ -1,14 +1,19 @@
 (function() {
-  angular.module('save-a-selfie.info')
-    .config(function($stateProvider, $urlRouterProvider) {
-      $stateProvider
-        .state('tabs.info', {
-          url: '/info',
-          views: {
-            'tab-info': {
-              templateUrl: 'app/info/info.html'
-            }
+  angular
+    .module('save-a-selfie.info')
+    .config(configure);
+
+  configure.$inject = ['$stateProvider'];
+
+  function configure($stateProvider) {
+    $stateProvider
+      .state('tabs.info', {
+        url: '/info',
+        views: {
+          'tab-info': {
+            templateUrl: 'app/info/info.html'
           }
-        });
-    });
+        }
+      });
+  }
 })();

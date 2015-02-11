@@ -1,5 +1,6 @@
 (function() {
-  angular.module('save-a-selfie.info', [
-    'ionic'
-  ]);
+  angular
+    .module('save-a-selfie.info', [
+      'ionic'
+    ]);
 })();
