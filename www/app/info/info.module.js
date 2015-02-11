@@ -1,3 +1,5 @@
-angular.module('save-a-selfie.info', [
-  'ionic'
-]);
+(function() {
+  angular.module('save-a-selfie.info', [
+    'ionic'
+  ]);
+})();

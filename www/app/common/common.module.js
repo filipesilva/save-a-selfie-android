@@ -1,1 +1,3 @@
-angular.module('save-a-selfie.common', []);
+(function() {
+  angular.module('save-a-selfie.common', []);
+})();

@@ -1,36 +1,39 @@
-angular.module('save-a-selfie.common')
-  .factory('CsvSrvc', function(
-    $http,
-    apiUrl
-  ) {
-    // ref: http://stackoverflow.com/a/1293163/2343
-    // This will parse a delimited string into an array of
-    // arrays. The default delimiter is the comma, but this
-    // can be overriden in the second argument.
-    function CSVToArray( strData, strDelimiter ){
+(function() {
+  angular.module('save-a-selfie.common')
+    .factory('CsvSrvc', function(
+      $http,
+      apiUrl
+    ) {
+      // ref: http://stackoverflow.com/a/1293163/2343
+      // This will parse a delimited string into an array of
+      // arrays. The default delimiter is the comma, but this
+      // can be overriden in the second argument.
+      function CSVToArray(strData, strDelimiter) {
         // Check to see if the delimiter is defined. If not,
         // then default to comma.
         strDelimiter = (strDelimiter || ",");
 
         // Create a regular expression to parse the CSV values.
         var objPattern = new RegExp(
-            (
-                // Delimiters.
-                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+          (
+            // Delimiters.
+            "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
 
-                // Quoted fields.
-                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+            // Quoted fields.
+            "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
 
-                // Standard fields.
-                "([^\"\\" + strDelimiter + "\\r\\n]*))"
-            ),
-            "gi"
-            );
+            // Standard fields.
+            "([^\"\\" + strDelimiter + "\\r\\n]*))"
+          ),
+          "gi"
+        );
 
 
         // Create an array to hold our data. Give the array
         // a default empty first row.
-        var arrData = [[]];
+        var arrData = [
+          []
+        ];
 
         // Create an array to hold our individual pattern
         // matching groups.
@@ -39,58 +42,59 @@ angular.module('save-a-selfie.common')
 
         // Keep looping over the regular expression matches
         // until we can no longer find a match.
-        while (arrMatches = objPattern.exec( strData )) {
+        while (arrMatches = objPattern.exec(strData)) {
 
-            // Get the delimiter that was found.
-            var strMatchedDelimiter = arrMatches[ 1 ];
+          // Get the delimiter that was found.
+          var strMatchedDelimiter = arrMatches[1];
 
-            // Check to see if the given delimiter has a length
-            // (is not the start of string) and if it matches
-            // field delimiter. If id does not, then we know
-            // that this delimiter is a row delimiter.
-            if (
-                strMatchedDelimiter.length &&
-                strMatchedDelimiter !== strDelimiter
-                ){
+          // Check to see if the given delimiter has a length
+          // (is not the start of string) and if it matches
+          // field delimiter. If id does not, then we know
+          // that this delimiter is a row delimiter.
+          if (
+            strMatchedDelimiter.length &&
+            strMatchedDelimiter !== strDelimiter
+          ) {
 
-                // Since we have reached a new row of data,
-                // add an empty row to our data array.
-                arrData.push( [] );
+            // Since we have reached a new row of data,
+            // add an empty row to our data array.
+            arrData.push([]);
 
-            }
+          }
 
-            var strMatchedValue;
+          var strMatchedValue;
 
-            // Now that we have our delimiter out of the way,
-            // let's check to see which kind of value we
-            // captured (quoted or unquoted).
-            if (arrMatches[ 2 ]){
+          // Now that we have our delimiter out of the way,
+          // let's check to see which kind of value we
+          // captured (quoted or unquoted).
+          if (arrMatches[2]) {
 
-                // We found a quoted value. When we capture
-                // this value, unescape any double quotes.
-                strMatchedValue = arrMatches[ 2 ].replace(
-                    new RegExp( "\"\"", "g" ),
-                    "\""
-                    );
+            // We found a quoted value. When we capture
+            // this value, unescape any double quotes.
+            strMatchedValue = arrMatches[2].replace(
+              new RegExp("\"\"", "g"),
+              "\""
+            );
 
-            } else {
+          } else {
 
-                // We found a non-quoted value.
-                strMatchedValue = arrMatches[ 3 ];
+            // We found a non-quoted value.
+            strMatchedValue = arrMatches[3];
 
-            }
+          }
 
 
-            // Now that we have our value string, let's add
-            // it to the data array.
-            arrData[ arrData.length - 1 ].push( strMatchedValue );
+          // Now that we have our value string, let's add
+          // it to the data array.
+          arrData[arrData.length - 1].push(strMatchedValue);
         }
 
         // Return the parsed data.
-        return( arrData );
-    }
+        return (arrData);
+      }
 
-    return {
-      parse: CSVToArray
-    };
-  });
+      return {
+        parse: CSVToArray
+      };
+    });
+})();
