@@ -4,10 +4,10 @@
       $scope,
       $ionicActionSheet,
       $ionicHistory,
-      CameraSrvc
+      cameraHelper
     ) {
       var vm = this;
-      
+
       // members
       vm.activate = activate;
       vm.takePhoto = takePhoto;
@@ -43,7 +43,7 @@
       }
 
       function takePhoto() {
-        CameraSrvc.takePhoto()
+        cameraHelper.takePhoto()
           .then(function(imageData) {
             var image = document.getElementById('selfie');
             image.src = "data:image/jpeg;base64," + imageData;
@@ -53,7 +53,7 @@
       }
 
       function pickFromGallery() {
-        CameraSrvc.pickFromGallery()
+        cameraHelper.pickFromGallery()
           .then(function(imageData) {
             var image = document.getElementById('selfie');
             image.src = "data:image/jpeg;base64," + imageData;

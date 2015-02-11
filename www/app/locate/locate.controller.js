@@ -6,7 +6,7 @@
       $ionicLoading,
       $cordovaGeolocation,
       uiGmapIsReady,
-      MarkersSrvc
+      markers
     ) {
       var vm = this;
 
@@ -70,7 +70,7 @@
               // TODO there still seems to be a delay on mobile
               uiGmapIsReady.promise(),
               // get markers
-              MarkersSrvc.get()
+              markers.get()
               .then(function(response) {
                 vm.map.markers = response.data;
               }),

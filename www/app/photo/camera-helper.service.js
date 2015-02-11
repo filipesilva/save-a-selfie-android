@@ -1,6 +1,6 @@
 (function() {
   angular.module('save-a-selfie.photo')
-    .factory('CameraSrvc', function(
+    .factory('cameraHelper', function(
       $cordovaCamera
     ) {
       // members

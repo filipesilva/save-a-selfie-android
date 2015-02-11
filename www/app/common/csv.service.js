@@ -1,6 +1,6 @@
 (function() {
   angular.module('save-a-selfie.common')
-    .factory('CsvSrvc', function(
+    .factory('csv', function(
       $http,
       apiUrl
     ) {

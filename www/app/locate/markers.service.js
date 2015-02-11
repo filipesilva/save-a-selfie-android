@@ -1,9 +1,9 @@
 (function() {
   angular.module('save-a-selfie.locate')
-    .factory('MarkersSrvc', function(
+    .factory('markers', function(
       $http,
       apiUrl,
-      CsvSrvc
+      csv
     ) {
       // members
       var service = {
@@ -24,7 +24,7 @@
       }
 
       function csvToArray(data) {
-        return CsvSrvc.parse(data, '\t');
+        return csv.parse(data, '\t');
       }
 
       function arrayToMarker(data) {
