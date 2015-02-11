@@ -7,23 +7,23 @@ angular.module('save-a-selfie.locate')
     uiGmapIsReady,
     MarkersSrvc
   ) {
-    var view = this;
+    var vm = this;
 
     $scope.$on('$ionicView.enter', function(scopes, states) {
-      view.enter();
+      vm.enter();
     });
 
     $scope.$on('$ionicView.loaded', function(scopes, states) {
-      view.loaded();
+      vm.loaded();
     });
 
-    view.loaded = function() {
+    vm.loaded = function() {
       // initial map position, dublin
       var initial = {
         latitude: 53.3243201,
         longitude: -6.251695
       };
-      view.map = {
+      vm.map = {
         zoom: 13,
         center: {
           latitude: initial.latitude,
@@ -51,7 +51,7 @@ angular.module('save-a-selfie.locate')
 
     // TODO handle missing geolocation permission
     // TODO make it watch position?
-    view.enter = function() {
+    vm.enter = function() {
       //show loading message
       $q.when($ionicLoading.show({
           template: 'Finding your location...'
@@ -65,7 +65,7 @@ angular.module('save-a-selfie.locate')
             // get markers
             MarkersSrvc.get()
             .then(function(response) {
-              view.map.markers = response.data;
+              vm.map.markers = response.data;
             }),
             // get current position
             $cordovaGeolocation
@@ -75,11 +75,11 @@ angular.module('save-a-selfie.locate')
             })
             // update map
             .then(function(position) {
-              view.map.center = {
+              vm.map.center = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
               };
-              view.map.user.coords = {
+              vm.map.user.coords = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
               };

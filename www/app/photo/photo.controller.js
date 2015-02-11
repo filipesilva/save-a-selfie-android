@@ -5,13 +5,13 @@ angular.module('save-a-selfie.photo')
     $ionicHistory,
     CameraSrvc
   ) {
-    var view = this;
+    var vm = this;
 
-    $scope.$on('$ionicView.enter', function(scopes, states) {
-      view.resolve();
+    $scope.$on('$ionicvm.enter', function(scopes, states) {
+      vm.resolve();
     });
 
-    view.resolve = function() {
+    vm.resolve = function() {
       var hideSheet = $ionicActionSheet.show({
         titleText: 'Select image source',
         buttons: [{
@@ -25,16 +25,16 @@ angular.module('save-a-selfie.photo')
         },
         buttonClicked: function(index) {
           if (index === 0) {
-            view.takePhoto();
+            vm.takePhoto();
           } else if (index === 1) {
-            view.pickFromGallery();
+            vm.pickFromGallery();
           }
           return true;
         }
       });
     };
 
-    view.takePhoto = function() {
+    vm.takePhoto = function() {
       CameraSrvc.takePhoto()
         .then(function(imageData) {
           var image = document.getElementById('selfie');
@@ -44,7 +44,7 @@ angular.module('save-a-selfie.photo')
         });
     };
 
-    view.pickFromGallery = function() {
+    vm.pickFromGallery = function() {
       CameraSrvc.pickFromGallery()
         .then(function(imageData) {
           var image = document.getElementById('selfie');
