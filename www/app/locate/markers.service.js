@@ -5,12 +5,29 @@
       apiUrl,
       CsvSrvc
     ) {
-
-      var csvToArray = function(data) {
-        return CsvSrvc.parse(data, '\t');
+      // members
+      var service = {
+        get: get
       };
+      return service;
 
-      var arrayToMarker = function(data) {
+      // functions
+
+      function get(argument) {
+        var req = {
+          method: 'GET',
+          url: apiUrl +
+            '/wp-content/themes/magazine-child/getMapData.php',
+          transformResponse: [csvToArray, arrayToMarker]
+        };
+        return $http(req);
+      }
+
+      function csvToArray(data) {
+        return CsvSrvc.parse(data, '\t');
+      }
+
+      function arrayToMarker(data) {
         return data.filter(function(element) {
             if (element.length === 7) {
               return true;
@@ -32,19 +49,6 @@
               source: element[6],
             };
           });
-      };
-
-      return {
-        get: function() {
-          var req = {
-            method: 'GET',
-            url: apiUrl +
-              '/wp-content/themes/magazine-child/getMapData.php',
-            transformResponse: [csvToArray, arrayToMarker]
-          };
-
-          return $http(req);
-        }
-      };
+      }
     });
 })();
