@@ -1,4 +1,4 @@
-angular.module('save-a-selfie.controllers')
+angular.module('save-a-selfie.locate')
   .controller('LocateCtrl', function(
     $scope,
     $q,
@@ -60,6 +60,7 @@ angular.module('save-a-selfie.controllers')
         .then(function() {
           return $q.all([
             // wait for gmaps to be ready
+            // TODO there still seems to be a delay on mobile
             uiGmapIsReady.promise(),
             // get markers
             MarkersSrvc.get()

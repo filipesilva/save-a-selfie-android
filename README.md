@@ -14,15 +14,15 @@ framework for mobile applications using
 [AngularJS](https://angularjs.org/) and
 [Cordova](http://cordova.apache.org/). [Phonegap
 Build](https://build.phonegap.com/) is also used for creating the
-builds.
+builds (WIP).
 
-On the Angular side, [Todd Motto's style
-guide](https://github.com/toddmotto/angularjs-styleguide) is overall
+On the Angular side, [John Papa's style
+guide](https://github.com/johnpapa/angularjs-styleguide) is overall
 used. It's important to note that the code is organized in modules,
 mostly to keep it somewhat organized and make it easier to add new parts
-of the app. The main modules are the controllers, services and
-translations. Their namesake files will contain configurations, while
-each individual submodule will be in the folder.
+of the app. The main modules are the photo, locate. Their folders will be
+mostly self-contained, with all files for that feature in there. The common
+folder contains code that will be used by more than one feature.
 
 Cordova plugins will be interfaced via
 [ngCordova](http://ngcordova.com/) for easy of use.

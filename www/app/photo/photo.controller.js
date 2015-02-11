@@ -1,4 +1,4 @@
-angular.module('save-a-selfie.controllers')
+angular.module('save-a-selfie.photo')
   .controller('PhotoCtrl', function(
     $scope,
     $ionicActionSheet,

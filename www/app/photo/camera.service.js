@@ -1,4 +1,4 @@
-angular.module('save-a-selfie.services')
+angular.module('save-a-selfie.photo')
   .factory('CameraSrvc', function(
     $cordovaCamera
   ) {
