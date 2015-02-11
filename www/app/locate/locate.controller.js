@@ -10,15 +10,21 @@
     ) {
       var vm = this;
 
+      // members
+      vm.activate = activate;
+      vm.initialize = initialize;
+
+      // listeners
       $scope.$on('$ionicView.enter', function(scopes, states) {
-        vm.enter();
+        vm.activate();
       });
 
       $scope.$on('$ionicView.loaded', function(scopes, states) {
-        vm.loaded();
+        vm.initialize();
       });
 
-      vm.loaded = function() {
+      // functions
+      function initialize() {
         // initial map position, dublin
         var initial = {
           latitude: 53.3243201,
@@ -48,11 +54,11 @@
           },
           markers: []
         };
-      };
+      }
 
       // TODO handle missing geolocation permission
       // TODO make it watch position?
-      vm.enter = function() {
+      function activate() {
         //show loading message
         $q.when($ionicLoading.show({
             template: 'Finding your location...'
@@ -69,8 +75,7 @@
                 vm.map.markers = response.data;
               }),
               // get current position
-              $cordovaGeolocation
-              .getCurrentPosition({
+              $cordovaGeolocation.getCurrentPosition({
                 timeout: 10000,
                 enableHighAccuracy: false
               })
@@ -92,6 +97,6 @@
           .finally(function() {
             $ionicLoading.hide();
           });
-      };
+      }
     });
 })();

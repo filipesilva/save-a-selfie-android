@@ -7,12 +7,19 @@
       CameraSrvc
     ) {
       var vm = this;
+      
+      // members
+      vm.activate = activate;
+      vm.takePhoto = takePhoto;
+      vm.pickFromGallery = pickFromGallery;
 
+      // listeners
       $scope.$on('$ionicView.enter', function(scopes, states) {
-        vm.resolve();
+        vm.activate();
       });
 
-      vm.resolve = function() {
+      // functions
+      function activate() {
         var hideSheet = $ionicActionSheet.show({
           titleText: 'Select image source',
           buttons: [{
@@ -33,9 +40,9 @@
             return true;
           }
         });
-      };
+      }
 
-      vm.takePhoto = function() {
+      function takePhoto() {
         CameraSrvc.takePhoto()
           .then(function(imageData) {
             var image = document.getElementById('selfie');
@@ -43,9 +50,9 @@
           }, function(err) {
             // error
           });
-      };
+      }
 
-      vm.pickFromGallery = function() {
+      function pickFromGallery() {
         CameraSrvc.pickFromGallery()
           .then(function(imageData) {
             var image = document.getElementById('selfie');
@@ -53,6 +60,6 @@
           }, function(err) {
             // error
           });
-      };
+      }
     });
 })();
