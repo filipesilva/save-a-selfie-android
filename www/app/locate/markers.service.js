@@ -6,6 +6,7 @@
   markers.$inject = ['$http', 'apiUrl', 'csv'];
 
   function markers($http, apiUrl, csv) {
+
     // members
     var service = {
       get: get
@@ -37,12 +38,19 @@
           }
         })
         .map(function(element, index) {
+          var icons = [
+            'img/defibrillator-marker-icon.png',
+            'img/life-ring-marker-icon.png',
+            'img/first-aid-kit-marker-icon.png',
+            'img/hydrant-marker-icon.png',
+          ];
           return {
             id: index,
             coords: {
               latitude: parseFloat(element[3]),
               longitude: parseFloat(element[4])
             },
+            icon: icons[element[2]],
             image: element[0],
             caption: element[1],
             type: element[2],
