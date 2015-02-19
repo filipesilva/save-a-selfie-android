@@ -3,8 +3,7 @@
     "browser"
   ],
   "loadEagerly": [
-    "www/js/**/*.js",
-    "www/lib/**/*.js"
+    "www/js/**/*.js"
   ],
   "plugins": {
     "complete_strings": {},
