@@ -6,7 +6,12 @@
       <-- TODO use ui-gmap-windows to render many info windows instead -->
         <ui-gmap-markers models="locate.map.markers" coords="'coords'" icon="'icon'">
           <ui-gmap-windows>
-            <div ng-non-bindable>{{ caption }}</div>
+            <div ng-non-bindable>
+              <img src="{{ thumb }}" alt="" />
+              <p>
+                {{ caption }}
+              </p>
+            </div>
           </ui-gmap-windows>
         </ui-gmap-markers>
     </ui-gmap-google-map>
