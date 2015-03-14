@@ -4,11 +4,11 @@
     .controller('LocateCtrl', locate);
 
   locate.$inject = ['$scope', '$q', '$ionicLoading', '$cordovaGeolocation',
-    'uiGmapIsReady', 'markers'
+    'uiGmapGoogleMapApi', 'markers'
   ];
 
   function locate($scope, $q, $ionicLoading, $cordovaGeolocation,
-    uiGmapIsReady, markers) {
+    uiGmapGoogleMapApi, markers) {
     var vm = this;
 
     // members
@@ -57,42 +57,41 @@
       };
     }
 
-    // TODO handle missing geolocation permission
     // TODO make it watch position?
     function activate() {
       //show loading message
       $q.when($ionicLoading.show({
           template: 'Finding your location...'
         }))
-        // wait for all three promises before hiding loading box
+        // wait for gmaps to be ready
         .then(function() {
-          return $q.all([
-            // wait for gmaps to be ready
-            // TODO there still seems to be a delay on mobile
-            uiGmapIsReady.promise(),
-            // get markers
-            markers.get()
-            .then(function(response) {
-              vm.map.markers = response.data;
-            }),
-            // get current position
-            $cordovaGeolocation.getCurrentPosition({
-              timeout: 10000,
-              enableHighAccuracy: false
-            })
-            // update map
-            .then(function(position) {
-              // TODO map doesn't seem to be centering on first update
-              vm.map.center = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-              };
-              vm.map.user.coords = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-              };
-            })
-          ]);
+          return uiGmapGoogleMapApi;
+        })
+        .then(function() {
+          // get markers
+          return markers.get();
+        })
+        .then(function(response) {
+          vm.map.markers = response.data;
+        })
+        .then(function() {
+          // get current position
+          return $cordovaGeolocation.getCurrentPosition({
+            timeout: 10000,
+            enableHighAccuracy: false
+          });
+        })
+        .then(function(position) {
+          // TODO map doesn't seem to be centering on first update
+          // update map
+          vm.map.center = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          };
+          vm.map.user.coords = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          };
         })
         // TODO catch and handle error
         // hide loading message

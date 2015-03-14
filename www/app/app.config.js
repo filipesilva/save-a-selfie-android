@@ -3,14 +3,7 @@
     .module('save-a-selfie')
     .config(configure);
 
-  configure.$inject = ['uiGmapGoogleMapApiProvider'];
+  configure.$inject = [];
 
-  function configure(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-      // TODO add api key
-      // key: 'your api key',
-      v: '3.17',
-      libraries: 'weather,geometry,visualization'
-    });
-  }
+  function configure() {}
 })();
