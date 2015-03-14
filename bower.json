@@ -2,8 +2,8 @@
   "name": "save-a-selfie",
   "private": "true",
   "dependencies": {
-    "ionic": "driftyco/ionic-bower#v1.0.0-beta.14",
-    "angular-google-maps": "~2.0.12",
-    "ngCordova": "~0.1.11-alpha"
+    "ionic": "driftyco/ionic-bower#v1.0.0-rc.0",
+    "angular-google-maps": "~2.0.16",
+    "ngCordova": "~0.1.12-alpha"
   }
 }
