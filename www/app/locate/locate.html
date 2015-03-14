@@ -1,13 +1,30 @@
 <ion-view view-title="Locate">
-  <ion-content class="map-container">
-    <ui-gmap-google-map center="locate.map.center" zoom="locate.map.zoom">
-      <ui-gmap-marker idKey="locate.map.user.id" coords="locate.map.user.coords" options="locate.map.user.options">
+  <ion-content class="map-container"
+    data-tap-disabled="true">
+    <ui-gmap-google-map center="locate.map.center"
+      zoom="locate.map.zoom">
+      <ui-gmap-marker idKey="locate.map.user.id"
+        coords="locate.map.user.coords"
+        options="locate.map.user.options">
       </ui-gmap-marker>
-      <-- TODO use ui-gmap-windows to render many info windows instead -->
-        <ui-gmap-markers models="locate.map.markers" coords="'coords'" icon="'icon'">
+      <-- TODO
+        use
+        ui-gmap-windows
+        to
+        render
+        many
+        info
+        windows
+        instead
+        -->
+        <ui-gmap-markers models="locate.map.markers"
+          coords="'coords'"
+          icon="'icon'">
           <ui-gmap-windows>
-            <div ng-non-bindable class="marker-window-text">
-              <img src="{{ thumb }}" alt="" />
+            <div ng-non-bindable
+              class="marker-window-text">
+              <img src="{{ thumb }}"
+                alt="" />
               <p>
                 {{ caption }}
               </p>
@@ -15,9 +32,10 @@
           </ui-gmap-windows>
         </ui-gmap-markers>
     </ui-gmap-google-map>
-    <div class="padding">
+    <div class="padding dock-bottom">
       <div class="info-bubble">
-        <img src="img/save-a-selfie-character.png" width="75" />
+        <img src="img/save-a-selfie-character.png"
+          width="75" />
         <p>
           Tap <b>Photo</b> above to take or retrieve a photo,
           <b>Locate</b> to find a defibrilator and view photos, or <b>Info</b> to learn about the project.
