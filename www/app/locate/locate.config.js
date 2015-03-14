@@ -9,7 +9,7 @@
     uiGmapGoogleMapApiProvider.configure({
       // TODO add api key
       // key: 'your api key',
-      v: '3.17'
+      v: '3.18'
     });
   }
 })();

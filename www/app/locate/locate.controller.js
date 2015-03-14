@@ -53,7 +53,19 @@
             longitude: initial.longitude
           }
         },
-        markers: []
+        markers: [],
+        markersEvents: {
+          click: function(marker, eventName, model, args) {
+            vm.map.window.model = model;
+            vm.map.window.show = true;
+          }
+        },
+        window: {
+          show: false,
+          closeClick: function() {
+            this.show = false;
+          }
+        }
       };
     }
 
@@ -66,13 +78,6 @@
         // wait for gmaps to be ready
         .then(function() {
           return uiGmapGoogleMapApi;
-        })
-        .then(function() {
-          // get markers
-          return markers.get();
-        })
-        .then(function(response) {
-          vm.map.markers = response.data;
         })
         .then(function() {
           // get current position
@@ -92,6 +97,13 @@
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           };
+        })
+        .then(function() {
+          // get markers
+          return markers.get();
+        })
+        .then(function(response) {
+          vm.map.markers = response.data;
         })
         // TODO catch and handle error
         // hide loading message

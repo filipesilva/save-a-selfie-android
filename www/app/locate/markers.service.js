@@ -55,7 +55,7 @@
             caption: element[1],
             type: element[2],
             thumb: element[5],
-            source: element[6],
+            source: element[6]
           };
         });
     }

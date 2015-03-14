@@ -10,10 +10,8 @@
   top: 0;
   left: 0;
 }
-.dock-bottom {
-  position: fixed;
-  bottom: 15px;
-  left: 0px;
+.marker-window-caption {
+  width: 150px;
 }
 #info-logos img {
   width: 100%;
@@ -22,9 +20,16 @@
   border-radius: 15px;
   background-color: #886aea;
   padding: 15px;
-  margin-top: 35px;
   color: #FFF;
   font-size: large;
+}
+.info-bubble-margin-top {
+  margin-top: 35px;
+}
+.dock-bottom {
+  position: fixed;
+  bottom: 15px;
+  left: 0px;
 }
 .info-bubble img {
   display: block;
@@ -33,7 +38,4 @@
 }
 #selfie {
   background-color: #DDD;
-}
-.marker-window-text {
-  width: 150px;
 }

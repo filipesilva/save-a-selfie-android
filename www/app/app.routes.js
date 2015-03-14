@@ -12,6 +12,6 @@
         abstract: true,
         templateUrl: "app/layout/tabs.html"
       });
-    $urlRouterProvider.otherwise('/tabs/info');
+    $urlRouterProvider.otherwise('/tabs/locate');
   }
 })();
