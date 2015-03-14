@@ -1,33 +1,34 @@
 /* Empty. Add your own CSS if you like */
 
-/* TODO make this 100%, check faq for module */
+.map-container .scroll {
+  height: 100%;
+}
 .angular-google-map-container {
-  height: 400px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-
 #info-logos img {
-  width:100%;
+  width: 100%;
 }
-
 .info-bubble {
   border-radius: 15px;
   background-color: #886aea;
-  padding: 30px 15px 30px 15px;
+  padding: 15px;
   margin-top: 50px;
   color: #FFF;
   font-size: large;
 }
-
-.info-bubble img{
+.info-bubble img {
   display: block;
   float: right;
   margin-top: -75px;
 }
-
 #selfie {
   background-color: #DDD;
 }
-
 .marker-window-text {
   width: 150px;
 }
