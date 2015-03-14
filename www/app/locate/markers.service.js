@@ -50,12 +50,20 @@
               latitude: parseFloat(element[3]),
               longitude: parseFloat(element[4])
             },
-            icon: icons[element[2]],
             image: element[0],
             caption: element[1],
             type: element[2],
             thumb: element[5],
-            source: element[6]
+            source: element[6],
+            options: {
+              icon: {
+                anchor: {
+                  x: 20,
+                  y: 20
+                },
+                url: icons[element[2]]
+              }
+            },
           };
         });
     }

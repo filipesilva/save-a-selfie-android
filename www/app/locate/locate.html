@@ -10,10 +10,12 @@
       <ui-gmap-markers models="locate.map.markers"
           coords="'coords'"
           icon="'icon'"
+          options="'options'"
           events="locate.map.markersEvents">
       </ui-gmap-markers>
       <ui-gmap-window show="locate.map.window.show"
           coords="locate.map.window.model.coords"
+          options="locate.map.window.options"
           closeclick="locate.map.window.closeClick()">
         <div>
           <img src="{{ locate.map.window.model.thumb }}" />

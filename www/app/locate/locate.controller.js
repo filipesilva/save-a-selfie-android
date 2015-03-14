@@ -60,10 +60,24 @@
             vm.map.window.show = true;
           }
         },
+        markerOptions: {
+          icon: {
+            anchor: {
+              x: 24,
+              y: 24
+            }
+          },
+        },
         window: {
           show: false,
           closeClick: function() {
             this.show = false;
+          },
+          options: {
+            pixelOffset: {
+              height: -15,
+              width: 0
+            }
           }
         }
       };
