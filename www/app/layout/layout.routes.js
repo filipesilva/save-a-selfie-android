@@ -10,7 +10,8 @@
       .state('tabs', {
         url: "/tabs",
         abstract: true,
-        templateUrl: "app/layout/tabs.html"
+        templateUrl: "app/layout/tabs.html",
+        controller: 'Tabs as tabs'
       });
     $urlRouterProvider.otherwise('/tabs/locate');
   }

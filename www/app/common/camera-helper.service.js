@@ -1,15 +1,19 @@
 (function() {
   angular
-    .module('save-a-selfie.photo')
+    .module('save-a-selfie.common')
     .factory('cameraHelper', cameraHelper);
 
   cameraHelper.$inject = ['$cordovaCamera'];
 
   function cameraHelper($cordovaCamera) {
+
+    var selfie;
+
     // members
     var service = {
       takePhoto: takePhoto,
-      pickFromGallery: pickFromGallery
+      pickFromGallery: pickFromGallery,
+      getSelfie: getSelfie
     };
     return service;
 
@@ -34,14 +38,32 @@
       var options = angular.extend({
         sourceType: Camera.PictureSourceType.CAMERA
       }, baseOptions());
-      return $cordovaCamera.getPicture(options);
+      return saveSelfie(options);
     }
 
     function pickFromGallery() {
       var options = angular.extend({
         sourceType: Camera.PictureSourceType.PHOTOLIBRARY
       }, baseOptions());
-      return $cordovaCamera.getPicture(options);
+      return saveSelfie(options);
+    }
+
+    function saveSelfie(options) {
+      return $cordovaCamera.getPicture(options)
+        .then(function(imageData) {
+          selfie = imageData;
+        })
+        .catch(function(err) {
+          // error
+        });
+    }
+
+    function getSelfie() {
+      if (selfie) {
+        return selfie;
+      } else {
+        // selfie not taken
+      }
     }
   }
 })();

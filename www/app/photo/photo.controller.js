@@ -3,17 +3,13 @@
     .module('save-a-selfie.photo')
     .controller('Photo', Photo);
 
-  Photo.$inject = ['$scope', '$ionicActionSheet', '$ionicHistory',
-    'cameraHelper'
-  ];
+  Photo.$inject = ['$scope', 'cameraHelper'];
 
-  function Photo($scope, $ionicActionSheet, $ionicHistory, cameraHelper) {
+  function Photo($scope, cameraHelper) {
     var vm = this;
 
     // members
     vm.activate = activate;
-    vm.takePhoto = takePhoto;
-    vm.pickFromGallery = pickFromGallery;
 
     // listeners
     $scope.$on('$ionicView.enter', function(scopes, states) {
@@ -22,46 +18,8 @@
 
     // functions
     function activate() {
-      var hideSheet = $ionicActionSheet.show({
-        titleText: 'Select image source',
-        buttons: [{
-          text: 'Take photo'
-        }, {
-          text: 'Choose from existing'
-        }],
-        cancelText: 'Cancel',
-        cancel: function() {
-          $ionicHistory.goBack();
-        },
-        buttonClicked: function(index) {
-          if (index === 0) {
-            vm.takePhoto();
-          } else if (index === 1) {
-            vm.pickFromGallery();
-          }
-          return true;
-        }
-      });
-    }
-
-    function takePhoto() {
-      cameraHelper.takePhoto()
-        .then(function(imageData) {
-          var image = document.getElementById('selfie');
-          image.src = "data:image/jpeg;base64," + imageData;
-        }, function(err) {
-          // error
-        });
-    }
-
-    function pickFromGallery() {
-      cameraHelper.pickFromGallery()
-        .then(function(imageData) {
-          var image = document.getElementById('selfie');
-          image.src = "data:image/jpeg;base64," + imageData;
-        }, function(err) {
-          // error
-        });
+      var image = document.getElementById('selfie');
+      image.src = "data:image/jpeg;base64," + cameraHelper.getSelfie();
     }
   }
 })();
