@@ -5,6 +5,7 @@
       'uiGmapgoogle-maps',
       'ngCordova',
       'save-a-selfie.common',
+      'save-a-selfie.layout',
       'save-a-selfie.photo',
       'save-a-selfie.locate',
       'save-a-selfie.info'

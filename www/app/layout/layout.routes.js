@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('save-a-selfie')
+    .module('save-a-selfie.layout')
     .config(routes);
 
   routes.$inject = ['$stateProvider', '$urlRouterProvider'];
