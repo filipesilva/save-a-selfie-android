@@ -30,7 +30,8 @@
         targetWidth: 400,
         targetHeight: 400,
         correctOrientation: true,
-        saveToPhotoAlbum: false
+        saveToPhotoAlbum: false,
+        mediaType: Camera.MediaType.PICTURE
       };
     }
 

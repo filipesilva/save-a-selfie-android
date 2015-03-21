@@ -12,14 +12,20 @@
     ])
     .run(run);
 
-  run.$inject = ['$ionicPlatform'];
+  run.$inject = ['$ionicPlatform', 'Camera'];
 
-  function run($ionicPlatform) {
+  function run($ionicPlatform, Camera) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      }
+      // Warn if came is not available
+      if (window.Camera){
+        Camera = window.Camera;
+      } else {
+        console.warn('Cordova camera plugin not loaded!');
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
