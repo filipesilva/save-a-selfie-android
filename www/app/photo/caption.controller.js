@@ -3,9 +3,9 @@
     .module('save-a-selfie.photo')
     .controller('Caption', Caption);
 
-  Caption.$inject = ['$state', 'selfie'];
+  Caption.$inject = ['$scope', '$state', 'selfie'];
 
-  function Caption($state, selfie) {
+  function Caption($scope, $state, selfie) {
     var vm = this;
 
     // members
