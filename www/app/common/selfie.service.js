@@ -3,13 +3,10 @@
     .module('save-a-selfie.common')
     .factory('selfie', selfie);
 
-  selfie.$inject = ['$cordovaCamera'];
+  selfie.$inject = ['$cordovaCamera', 'imageResizer'];
 
-  function selfie($cordovaCamera) {
-
-    var photo;
-    var caption;
-    var device;
+  function selfie($cordovaCamera, imageResizer) {
+    var photo, thumb, caption, device;
 
     // members
     var service = {
@@ -19,7 +16,8 @@
       getCaption: getCaption,
       setDevice: setDevice,
       getDevice: getDevice,
-      getSelfie: getSelfie
+      getPhoto: getPhoto,
+      getThumb: getThumb
     };
     return service;
 
@@ -58,7 +56,9 @@
     function saveSelfie(options) {
       return $cordovaCamera.getPicture(options)
         .then(function(imageData) {
-          photo = imageData;
+          photo = "data:image/jpeg;base64," + imageData;
+          thumb = imageResizer.resizeBase64(photo, 150, 150, 'jpeg', 1);
+          console.log(thumb);
         })
         .catch(function(err) {
           // error
@@ -81,8 +81,12 @@
       return device;
     }
 
-    function getSelfie() {
+    function getPhoto() {
       return photo;
+    }
+
+    function getThumb() {
+      return thumb;
     }
   }
 })();

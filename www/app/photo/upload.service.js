@@ -42,7 +42,7 @@
             location: '',
             user: '',
             caption: selfie.getCaption(),
-            image: selfie.getSelfie(),
+            image: selfie.getPhoto(),
             thumbnail: 'thumbnail'
           };
           return $http.post(

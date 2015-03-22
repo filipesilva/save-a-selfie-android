@@ -7,16 +7,13 @@
 
   function Preview($scope, $state, selfie, upload) {
     var vm = this;
-    var selfieSrc;
-    var deviceIconSrc;
-    var caption;
 
     // members
     vm.activate = activate;
     vm.uploadSelfie = uploadSelfie;
-    vm.caption = caption;
-    vm.selfieSrc = selfieSrc;
-    vm.deviceIconSrc = deviceIconSrc;
+    vm.caption = '';
+    vm.thumbSrc = '';
+    vm.deviceIconSrc = '';
 
     // listeners
     $scope.$on('$ionicView.beforeEnter', function(scopes, states) {
@@ -27,7 +24,7 @@
     function activate() {
       vm.caption = selfie.getCaption();
       // TODO: handle missing image maybe
-      vm.selfieSrc = "data:image/jpeg;base64," + selfie.getSelfie();
+      vm.thumbSrc = selfie.getThumb();
 
       var device = selfie.getDevice();
 

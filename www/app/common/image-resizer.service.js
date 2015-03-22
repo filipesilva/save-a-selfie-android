@@ -18,7 +18,10 @@
     // This will 'load' the image to use in the next function.
     function resizeBase64(base64, width, height, format, quality) {
       var img = new Image();
-      img.src = 'data:image/' + format + ';base64,' + base64;
+      img.src = base64;
+      // TODO: convert ratio properly
+      //console.log(img.width);
+      //console.log(img.height);
       return imageToDataUri(img, width, height, format, quality);
     }
 
@@ -27,7 +30,7 @@
     // code to encode the image data.
     function imageToDataUri(img, width, height, format, quality) {
       // create an off-screen canvas
-      var canvas = $document.createElement('canvas'),
+      var canvas = $document[0].createElement('canvas'),
         ctx = canvas.getContext('2d');
       // set its dimension to target size
       canvas.width = width;
@@ -35,7 +38,7 @@
       // draw source image into the off-screen canvas:
       ctx.drawImage(img, 0, 0, width, height);
       // encode image to data-uri with base64 version of compressed image
-      return canvas.toDataURL('image/' + jpeg, quality);
+      return canvas.toDataURL('image/' + format, quality);
     }
   }
 })();
