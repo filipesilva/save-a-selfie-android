@@ -7,8 +7,7 @@
 
   function configure(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
-      // TODO add api key
-      // key: 'your api key',
+      key: 'AIzaSyB1KG0oaULj5KhnQww2-AWURqgxYvO3nZs',
       v: '3.18'
     });
   }
