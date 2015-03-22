@@ -18,8 +18,8 @@
       setCaption: setCaption,
       getCaption: getCaption,
       setDevice: setDevice,
-      getSelfieSrc: getSelfieSrc,
-      getIconSrc: getIconSrc
+      getDevice: getDevice,
+      getSelfie: getSelfie
     };
     return service;
 
@@ -77,26 +77,12 @@
       device = dev;
     }
 
-    function getIconSrc() {
-      if (device === 'defibrillator'){
-        return 'img/defibrillator-marker-icon.png';
-      } else if (device === 'life-ring'){
-        return 'img/life-ring-marker-icon.png';
-      } else if (device === 'first-aid-kit'){
-        return 'img/first-aid-kit-marker-icon.png';
-      } else if (device === 'hydrant'){
-        return 'img/hydrant-marker-icon.png';
-      } else {
-        return '';
-      }
+    function getDevice() {
+      return device;
     }
 
-    function getSelfieSrc() {
-      if (photo) {
-        return "data:image/jpeg;base64," + photo;
-      } else {
-        // selfie not taken
-      }
+    function getSelfie() {
+      return photo;
     }
   }
 })();
