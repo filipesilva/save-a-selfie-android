@@ -8,12 +8,14 @@
   function selfie($cordovaCamera) {
 
     var picture;
+    var caption;
     var device;
 
     // members
     var service = {
       takePhoto: takePhoto,
       pickFromGallery: pickFromGallery,
+      setCaption: setCaption,
       setDevice: setDevice,
       getSelfie: getSelfie
     };
@@ -59,6 +61,10 @@
         .catch(function(err) {
           // error
         });
+    }
+
+    function setCaption(cap) {
+      caption = cap;
     }
 
     function setDevice(dev) {

@@ -3,22 +3,21 @@
     .module('save-a-selfie.photo')
     .controller('Caption', Caption);
 
-  Caption.$inject = ['$scope'];
+  Caption.$inject = ['$state', 'selfie'];
 
-  function Caption($scope) {
+  function Caption($state, selfie) {
     var vm = this;
+    var text;
 
     // members
-    vm.activate = activate;
-
-    // listeners
-    $scope.$on('$ionicView.enter', function(scopes, states) {
-      vm.activate();
-    });
+    vm.text = text;
+    vm.addCaption = addCaption;
 
     // functions
-    function activate() {
 
+    function addCaption() {
+      selfie.setCaption(vm.text);
+      $state.go('tabs.device-type');
     }
   }
 })();

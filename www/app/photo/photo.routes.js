@@ -8,7 +8,7 @@
   function routes($stateProvider) {
     $stateProvider
       .state('tabs.device-type', {
-        url: '/photo',
+        url: '/device-type',
         views: {
           'tab-photo': {
             templateUrl: 'app/photo/device-type.html',
@@ -16,7 +16,7 @@
           }
         }
       }).state('tabs.caption', {
-        url: '/photo',
+        url: '/caption',
         views: {
           'tab-photo': {
             templateUrl: 'app/photo/caption.html',
@@ -24,7 +24,7 @@
           }
         }
       }).state('tabs.upload', {
-        url: '/photo',
+        url: '/upload',
         views: {
           'tab-photo': {
             templateUrl: 'app/photo/upload.html',
