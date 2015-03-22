@@ -101,7 +101,6 @@
           });
         })
         .then(function(position) {
-          // TODO map doesn't seem to be centering on first update
           // update map
           vm.map.center = {
             latitude: position.coords.latitude,

@@ -3,9 +3,9 @@
     .module('save-a-selfie.photo')
     .factory('upload', upload);
 
-  upload.$inject = ['$http', 'apiUrl', 'selfie'];
+  upload.$inject = ['$http', '$cordovaGeolocation', 'apiUrl', 'selfie'];
 
-  function upload($http, apiUrl, selfie) {
+  function upload($http, $cordovaGeolocation, apiUrl, selfie) {
 
     // members
     var service = {
@@ -29,20 +29,27 @@
         typeOfObject = 3;
       }
 
-      var params = {
-        id: 'aaa',
-        typeOfObject: typeOfObject,
-        latitude: 'latitude',
-        longitude: 'longitude',
-        location: 'location',
-        user: 'user',
-        caption: selfie.getCaption(),
-        image: selfie.getSelfie(),
-        thumbnail: 'thumbnail'
-      };
-      return $http.get('/wp-content/themes/magazine-child/test.something', {
-        params: params
-      });
+      return $cordovaGeolocation.getCurrentPosition({
+          timeout: 10000,
+          enableHighAccuracy: false
+        })
+        .then(function(position) {
+          var params = {
+            id: 'id',
+            typeOfObject: typeOfObject,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            location: '',
+            user: '',
+            caption: selfie.getCaption(),
+            image: selfie.getSelfie(),
+            thumbnail: 'thumbnail'
+          };
+          return $http.post(
+            '/wp-content/themes/magazine-child/test.something', {}, {
+              params: params
+            });
+        });
     }
   }
 })();
