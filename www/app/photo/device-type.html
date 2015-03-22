@@ -1,64 +1,30 @@
 <ion-view view-title="Device">
-  <ion-content>
+  <ion-content class="padding">
     <div class="row">
-      <div class="col">
-        <h3>Device type</h3>
+      <div class="col col-center text-center" ng-click="deviceType.selectDevice('defibrillator')">
+        <img src="img/defibrillator-icon.png" />
+        <p>Defibrillator</p>
+      </div>
+      <div class="col col-center text-center" ng-click="deviceType.selectDevice('life-ring')">
+        <img src="img/life-ring-icon.png" />
+        <p>Life Ring</p>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <label class="item item-radio">
-          <input type="radio"
-              name="group">
-          <div class="item-content device-icon">
-            <img src="img/defibrillator-icon.png" />
-            <br/> Defibrillator
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
+      <div class="col col-center text-center" ng-click="deviceType.selectDevice('first-aid-kit')">
+        <img src="img/first-aid-kit-icon.png" />
+        <p>First Aid Kit</p>
       </div>
-      <div class="col">
-        <label class="item item-radio">
-          <input type="radio"
-              name="group">
-          <div class="item-content device-icon">
-            <img src="img/life-ring-icon.png" />
-            <br/> Life Ring
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
+      <div class="col col-center text-center" ng-click="deviceType.selectDevice('hydrant')">
+        <img src="img/hydrant-icon.png" />
+        <p>Hydrant</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <label class="item item-radio">
-          <input type="radio"
-              name="group">
-          <div class="item-content device-icon">
-            <img src="img/first-aid-kit-icon.png" />
-            <br/> First Aid Kit
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-      </div>
-      <div class="col">
-        <label class="item item-radio">
-          <input type="radio"
-              name="group">
-          <div class="item-content device-icon">
-            <img src="img/hydrant-icon.png" />
-            <br/> Hydrant
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <button class="button button-block button-positive" ui-sref="tabs.caption">
-          Next
-        </button>
-      </div>
+
+    <div class="info-bubble info-bubble-margin-top">
+      <img src="img/save-a-selfie-character.png"
+          width="75" />
+      <p>Please select one of the objects above, corresponding to what is in the photo</p>
     </div>
   </ion-content>
 </ion-view>

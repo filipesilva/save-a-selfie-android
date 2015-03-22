@@ -24,7 +24,7 @@
   font-size: large;
 }
 .info-bubble-margin-top {
-  margin-top: 35px;
+  margin-top: 50px;
 }
 .dock-bottom {
   position: fixed;
@@ -36,8 +36,7 @@
   float: right;
   margin-top: -75px;
 }
-.device-icon {
-  height: 150px;
+.text-center {
   text-align: center;
 }
 #selfie {

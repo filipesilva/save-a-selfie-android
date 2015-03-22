@@ -3,22 +3,19 @@
     .module('save-a-selfie.photo')
     .controller('DeviceType', DeviceType);
 
-  DeviceType.$inject = ['$scope'];
+  DeviceType.$inject = ['$state', 'selfie'];
 
-  function DeviceType($scope) {
+  function DeviceType($state, selfie) {
     var vm = this;
 
     // members
-    vm.activate = activate;
-
-    // listeners
-    $scope.$on('$ionicView.enter', function(scopes, states) {
-      vm.activate();
-    });
+    vm.selectDevice = selectDevice;
 
     // functions
-    function activate() {
 
+    function selectDevice(device) {
+      selfie.setDevice(device);
+      $state.go('tabs.caption');
     }
   }
 })();
