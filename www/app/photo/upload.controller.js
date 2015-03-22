@@ -3,23 +3,35 @@
     .module('save-a-selfie.photo')
     .controller('Upload', Upload);
 
-  Upload.$inject = ['$scope'];
+  Upload.$inject = ['$scope', 'selfie'];
 
-  function Upload($scope) {
+  function Upload($scope, selfie) {
     var vm = this;
+    var selfieSrc;
+    var iconSrc;
+    var caption;
 
     // members
     vm.activate = activate;
+    vm.uploadSelfie = uploadSelfie;
+    vm.selfieSrc = selfieSrc;
+    vm.iconSrc = iconSrc;
+    vm.caption = caption;
 
     // listeners
-    $scope.$on('$ionicView.enter', function(scopes, states) {
+    $scope.$on('$ionicView.beforeEnter', function(scopes, states) {
       vm.activate();
     });
 
     // functions
     function activate() {
-      //var image = document.getElementById('selfie');
-      //image.src = "data:image/jpeg;base64," + selfie.getSelfie();
+      vm.selfieSrc = selfie.getSelfieSrc();
+      vm.iconSrc = selfie.getIconSrc();
+      vm.caption = selfie.getCaption();
+    }
+
+    function uploadSelfie() {
+      // body...
     }
   }
 })();

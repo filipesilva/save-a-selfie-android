@@ -7,7 +7,7 @@
 
   function selfie($cordovaCamera) {
 
-    var picture;
+    var photo;
     var caption;
     var device;
 
@@ -16,8 +16,10 @@
       takePhoto: takePhoto,
       pickFromGallery: pickFromGallery,
       setCaption: setCaption,
+      getCaption: getCaption,
       setDevice: setDevice,
-      getSelfie: getSelfie
+      getSelfieSrc: getSelfieSrc,
+      getIconSrc: getIconSrc
     };
     return service;
 
@@ -56,7 +58,7 @@
     function saveSelfie(options) {
       return $cordovaCamera.getPicture(options)
         .then(function(imageData) {
-          picture = imageData;
+          photo = imageData;
         })
         .catch(function(err) {
           // error
@@ -67,13 +69,31 @@
       caption = cap;
     }
 
+    function getCaption() {
+      return caption;
+    }
+
     function setDevice(dev) {
       device = dev;
     }
 
-    function getSelfie() {
-      if (picture) {
-        return picture;
+    function getIconSrc() {
+      if (device === 'defibrillator'){
+        return 'img/defibrillator-marker-icon.png';
+      } else if (device === 'life-ring'){
+        return 'img/life-ring-marker-icon.png';
+      } else if (device === 'first-aid-kit'){
+        return 'img/first-aid-kit-marker-icon.png';
+      } else if (device === 'hydrant'){
+        return 'img/hydrant-marker-icon.png';
+      } else {
+        return '';
+      }
+    }
+
+    function getSelfieSrc() {
+      if (photo) {
+        return "data:image/jpeg;base64," + photo;
       } else {
         // selfie not taken
       }

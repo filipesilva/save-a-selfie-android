@@ -1,11 +1,27 @@
 <ion-view view-title="Upload">
-  <ion-content>
-    <div class="row">
-      <div class="col">
-        <button class="button button-block button-positive">
-          Upload
-        </button>
-      </div>
+  <ion-content class="padding">
+    <div class="selfie-preview">
+      <img src="{{upload.selfieSrc}}"
+          height="150"
+          width="150" />
+      <p>
+        {{upload.caption}}
+      </p>
     </div>
+    <div class="icon-preview text-center">
+      <img src="{{upload.iconSrc}}" />
+    </div>
+
+    <button class="button button-block button-positive"
+        ng-click="upload.uploadSelfie()">
+      Upload
+    </button>
+
+    <div class="info-bubble info-bubble-margin-top">
+      <img src="img/save-a-selfie-character.png"
+          width="75" />
+      <p>Is everything right? If you need to make changes, press back, otherwise press 'Upload'.</p>
+    </div>
+
   </ion-content>
 </ion-view>

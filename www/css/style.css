@@ -24,7 +24,7 @@
   font-size: large;
 }
 .info-bubble-margin-top {
-  margin-top: 60px;
+  margin-top: 75px;
 }
 .dock-bottom {
   position: fixed;
@@ -38,6 +38,18 @@
 }
 .text-center {
   text-align: center;
+}
+.selfie-preview {
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 182px;
+}
+.icon-preview {
+  margin-top: 5px;
 }
 #selfie {
   background-color: #DDD;
