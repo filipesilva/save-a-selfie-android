@@ -7,11 +7,15 @@
 
   function Caption($state, selfie) {
     var vm = this;
-    var text;
 
     // members
-    vm.text = text;
+    vm.text = '';
     vm.addCaption = addCaption;
+
+    // listeners
+    $scope.$on('$ionicView.enter', function(scopes, states) {
+      vm.text = '';
+    });
 
     // functions
 

@@ -27,7 +27,7 @@
         url: '/preview',
         views: {
           'tab-photo': {
-            templateUrl: 'app/photo/Preview.html',
+            templateUrl: 'app/photo/preview.html',
             controller: 'Preview as preview'
           }
         }
