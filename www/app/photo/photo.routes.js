@@ -7,12 +7,28 @@
 
   function routes($stateProvider) {
     $stateProvider
-      .state('tabs.photo', {
+      .state('tabs.device-type', {
         url: '/photo',
         views: {
           'tab-photo': {
-            templateUrl: 'app/photo/photo.html',
-            controller: 'Photo as photo'
+            templateUrl: 'app/photo/device-type.html',
+            controller: 'DeviceType as deviceType'
+          }
+        }
+      }).state('tabs.caption', {
+        url: '/photo',
+        views: {
+          'tab-photo': {
+            templateUrl: 'app/photo/caption.html',
+            controller: 'Caption as caption'
+          }
+        }
+      }).state('tabs.upload', {
+        url: '/photo',
+        views: {
+          'tab-photo': {
+            templateUrl: 'app/photo/upload.html',
+            controller: 'Upload as upload'
           }
         }
       });

@@ -36,6 +36,10 @@
   float: right;
   margin-top: -75px;
 }
+.device-icon {
+  height: 150px;
+  text-align: center;
+}
 #selfie {
   background-color: #DDD;
 }

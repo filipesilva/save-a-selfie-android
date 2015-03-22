@@ -30,7 +30,7 @@
           }
           return photoPromise
             .then(function() {
-              $state.go('tabs.photo');
+              $state.go('tabs.device-type');
             })
             .catch(function(err) {
               // error

@@ -1,11 +1,11 @@
 (function() {
   angular
     .module('save-a-selfie.photo')
-    .controller('Photo', Photo);
+    .controller('Upload', Upload);
 
-  Photo.$inject = ['$scope', 'cameraHelper'];
+  Upload.$inject = ['$scope'];
 
-  function Photo($scope, cameraHelper) {
+  function Upload($scope) {
     var vm = this;
 
     // members
@@ -18,8 +18,8 @@
 
     // functions
     function activate() {
-      var image = document.getElementById('selfie');
-      image.src = "data:image/jpeg;base64," + cameraHelper.getSelfie();
+      //var image = document.getElementById('selfie');
+      //image.src = "data:image/jpeg;base64," + cameraHelper.getSelfie();
     }
   }
 })();
