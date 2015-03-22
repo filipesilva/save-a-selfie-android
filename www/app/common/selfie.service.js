@@ -1,13 +1,13 @@
 (function() {
   angular
     .module('save-a-selfie.common')
-    .factory('cameraHelper', cameraHelper);
+    .factory('selfie', selfie);
 
-  cameraHelper.$inject = ['$cordovaCamera'];
+  selfie.$inject = ['$cordovaCamera'];
 
-  function cameraHelper($cordovaCamera) {
+  function selfie($cordovaCamera) {
 
-    var selfie;
+    var picture;
 
     // members
     var service = {
@@ -52,7 +52,7 @@
     function saveSelfie(options) {
       return $cordovaCamera.getPicture(options)
         .then(function(imageData) {
-          selfie = imageData;
+          picture = imageData;
         })
         .catch(function(err) {
           // error
@@ -60,8 +60,8 @@
     }
 
     function getSelfie() {
-      if (selfie) {
-        return selfie;
+      if (picture) {
+        return picture;
       } else {
         // selfie not taken
       }

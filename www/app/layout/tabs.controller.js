@@ -3,9 +3,9 @@
     .module('save-a-selfie.layout')
     .controller('Tabs', Tabs);
 
-  Tabs.$inject = ['$state', '$ionicActionSheet', 'cameraHelper'];
+  Tabs.$inject = ['$state', '$ionicActionSheet', 'selfie'];
 
-  function Tabs($state, $ionicActionSheet, cameraHelper) {
+  function Tabs($state, $ionicActionSheet, selfie) {
     var vm = this;
 
     // members
@@ -24,9 +24,9 @@
         buttonClicked: function(index) {
           var photoPromise;
           if (index === 0) {
-            photoPromise = cameraHelper.takePhoto();
+            photoPromise = selfie.takePhoto();
           } else if (index === 1) {
-            photoPromise = cameraHelper.pickFromGallery();
+            photoPromise = selfie.pickFromGallery();
           }
           return photoPromise
             .then(function() {

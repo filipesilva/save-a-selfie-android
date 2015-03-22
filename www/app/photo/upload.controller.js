@@ -19,7 +19,7 @@
     // functions
     function activate() {
       //var image = document.getElementById('selfie');
-      //image.src = "data:image/jpeg;base64," + cameraHelper.getSelfie();
+      //image.src = "data:image/jpeg;base64," + selfie.getSelfie();
     }
   }
 })();
