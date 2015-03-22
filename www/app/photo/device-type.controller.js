@@ -15,7 +15,7 @@
 
     function selectDevice(device) {
       selfie.setDevice(device);
-      $state.go('tabs.upload');
+      $state.go('tabs.preview');
     }
   }
 })();

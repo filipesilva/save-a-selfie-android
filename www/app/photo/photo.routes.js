@@ -23,12 +23,12 @@
             controller: 'Caption as caption'
           }
         }
-      }).state('tabs.upload', {
-        url: '/upload',
+      }).state('tabs.preview', {
+        url: '/preview',
         views: {
           'tab-photo': {
-            templateUrl: 'app/photo/upload.html',
-            controller: 'Upload as upload'
+            templateUrl: 'app/photo/Preview.html',
+            controller: 'Preview as preview'
           }
         }
       });

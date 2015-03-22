@@ -1,19 +1,19 @@
-<ion-view view-title="Upload">
+<ion-view view-title="Preview">
   <ion-content class="padding">
     <div class="selfie-preview">
-      <img src="{{upload.selfieSrc}}"
+      <img src="{{preview.selfieSrc}}"
           height="150"
           width="150" />
       <p>
-        {{upload.caption}}
+        {{preview.caption}}
       </p>
     </div>
     <div class="icon-preview text-center">
-      <img src="{{upload.iconSrc}}" />
+      <img src="{{preview.iconSrc}}" />
     </div>
 
     <button class="button button-block button-positive"
-        ng-click="upload.uploadSelfie()">
+        ng-click="preview.uploadSelfie()">
       Upload
     </button>
 

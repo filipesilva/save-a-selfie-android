@@ -1,11 +1,11 @@
 (function() {
   angular
     .module('save-a-selfie.photo')
-    .controller('Upload', Upload);
+    .controller('Preview', Preview);
 
-  Upload.$inject = ['$scope', 'selfie'];
+  Preview.$inject = ['$scope', 'selfie'];
 
-  function Upload($scope, selfie) {
+  function Preview($scope, selfie) {
     var vm = this;
     var selfieSrc;
     var iconSrc;
