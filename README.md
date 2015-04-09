@@ -37,11 +37,14 @@ Development setup
 This project uses a couple of global npm packages. You can install all
 of them at once by running the following command:
 
-npm install -g cordova ionic bower plato
+    npm install -g cordova ionic bower plato
 
 Now you have to add js dependencies and restore cordova plugins:
 
-bower install cordova restore plugins --experimental
+    bower install
+    cordova restore plugins --experimental
+
+Finally, you can run ionic in the browser by doing `ionic serve --labs`
 
 To generate a Plato report do `plato -r -d report www/js`, and then open
 up `report/index.hml` to see it.
