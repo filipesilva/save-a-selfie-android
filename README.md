@@ -13,16 +13,16 @@ The app is done in [Ionic](http://ionicframework.com/), which is a
 framework for mobile applications using
 [AngularJS](https://angularjs.org/) and
 [Cordova](http://cordova.apache.org/). [Phonegap
-Build](https://build.phonegap.com/) is also used for creating the
-builds (WIP).
+Build](https://build.phonegap.com/) is also used for creating the builds
+(WIP).
 
 On the Angular side, [John Papa's style
 guide](https://github.com/johnpapa/angularjs-styleguide) is overall
 used. It's important to note that the code is organized in modules,
 mostly to keep it somewhat organized and make it easier to add new parts
-of the app. The main modules are the photo, locate. Their folders will be
-mostly self-contained, with all files for that feature in there. The common
-folder contains code that will be used by more than one feature.
+of the app. The main modules are the photo, locate. Their folders will
+be mostly self-contained, with all files for that feature in there. The
+common folder contains code that will be used by more than one feature.
 
 Cordova plugins will be interfaced via
 [ngCordova](http://ngcordova.com/) for easy of use.
@@ -44,7 +44,9 @@ Now you have to add js dependencies and restore cordova plugins:
     bower install
     cordova restore plugins --experimental
 
-Finally, you can run ionic in the browser by doing `ionic serve --labs`
+Finally, you can run ionic in the browser by doing `ionic serve --labs`,
+which will open a browser window showing side by side comparison of how
+the app looks like in Android and iOS.
 
 To generate a Plato report do `plato -r -d report www/js`, and then open
 up `report/index.hml` to see it.
