@@ -3,11 +3,11 @@
     .module('save-a-selfie.locate')
     .controller('LocateCtrl', locate);
 
-  locate.$inject = ['$scope', '$q', '$ionicLoading', '$cordovaGeolocation',
-    'uiGmapGoogleMapApi', 'markers', 'mapDisclaimer'
+  locate.$inject = ['$scope', '$q', '$ionicLoading', '$state',
+    '$cordovaGeolocation', 'uiGmapGoogleMapApi', 'markers', 'mapDisclaimer'
   ];
 
-  function locate($scope, $q, $ionicLoading, $cordovaGeolocation,
+  function locate($scope, $q, $ionicLoading, $state, $cordovaGeolocation,
     uiGmapGoogleMapApi, markers, mapDisclaimer) {
     var vm = this;
 
@@ -83,13 +83,17 @@
     function activate() {
       //show loading message
       mapDisclaimer.show()
+        .catch(function() {
+          $state.go('tabs.info');
+          return $q.reject();
+        })
         .then(function() {
           return $ionicLoading.show({
             template: 'Finding your location...'
           });
         })
-        // wait for gmaps to be ready
         .then(function() {
+          // wait for gmaps to be ready
           return uiGmapGoogleMapApi;
         })
         .then(function() {
@@ -117,7 +121,9 @@
         .then(function(response) {
           vm.map.markers = response.data;
         })
-        // TODO catch and handle error
+        .catch(function() {
+          console.log('error during map display');
+        })
         // hide loading message
         .finally(function() {
           $ionicLoading.hide();

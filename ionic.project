@@ -3,8 +3,8 @@
   "app_id": "",
   "proxies": [
     {
-      "path": "/wp/wp-content/themes/magazine-child",
-      "proxyUrl": "http://www.saveaselfie.org/wp/wp-content/themes/magazine-child"
+      "path": "/proxy",
+      "proxyUrl": "http://www.saveaselfie.org"
     }
   ]
 }

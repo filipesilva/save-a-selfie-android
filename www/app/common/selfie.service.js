@@ -59,8 +59,8 @@
           photo = "data:image/jpeg;base64," + imageData;
           thumb = imageResizer.resizeBase64(photo, 150, 150, 'jpeg', 1);
         })
-        .catch(function(err) {
-          // error
+        .catch(function() {
+          console.log('error taking photo');
         });
     }
 

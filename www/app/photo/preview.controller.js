@@ -3,9 +3,9 @@
     .module('save-a-selfie.photo')
     .controller('Preview', Preview);
 
-  Preview.$inject = ['$scope', '$state', 'selfie', 'upload'];
+  Preview.$inject = ['$scope', '$state', 'selfie', 'upload', 'eula'];
 
-  function Preview($scope, $state, selfie, upload) {
+  function Preview($scope, $state, selfie, upload, eula) {
     var vm = this;
 
     // members
@@ -40,12 +40,13 @@
     }
 
     function uploadSelfie() {
-      upload.addSelfie()
+      eula.show()
+        .then(upload.addSelfie)
         .then(function() {
-          // $state.go('tab.locate');
+          $state.go('tab.locate');
         })
-        .catch(function(error) {
-          // error
+        .catch(function() {
+          console.log('error uploading photo');
         });
     }
   }

@@ -13,7 +13,7 @@
 
     // functions
     function showPhotoOptions() {
-      var hideSheet = $ionicActionSheet.show({
+      return $ionicActionSheet.show({
         titleText: 'Select image source',
         buttons: [{
           text: '<i class="icon ion-camera"></i> Take photo'
@@ -31,9 +31,6 @@
           return photoPromise
             .then(function() {
               $state.go('tabs.caption');
-            })
-            .catch(function(err) {
-              // error
             });
         }
       });
