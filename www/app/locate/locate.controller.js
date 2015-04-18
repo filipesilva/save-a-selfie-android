@@ -4,11 +4,11 @@
     .controller('LocateCtrl', locate);
 
   locate.$inject = ['$scope', '$q', '$ionicLoading', '$cordovaGeolocation',
-    'uiGmapGoogleMapApi', 'markers'
+    'uiGmapGoogleMapApi', 'markers', 'mapDisclaimer'
   ];
 
   function locate($scope, $q, $ionicLoading, $cordovaGeolocation,
-    uiGmapGoogleMapApi, markers) {
+    uiGmapGoogleMapApi, markers, mapDisclaimer) {
     var vm = this;
 
     // members
@@ -16,13 +16,9 @@
     vm.initialize = initialize;
 
     // listeners
-    $scope.$on('$ionicView.enter', function(scopes, states) {
-      vm.activate();
-    });
+    $scope.$on('$ionicView.enter', vm.activate);
 
-    $scope.$on('$ionicView.loaded', function(scopes, states) {
-      vm.initialize();
-    });
+    $scope.$on('$ionicView.loaded', vm.initialize);
 
     // functions
     function initialize() {
@@ -86,9 +82,12 @@
     // TODO make it watch position?
     function activate() {
       //show loading message
-      $q.when($ionicLoading.show({
-          template: 'Finding your location...'
-        }))
+      mapDisclaimer.show()
+        .then(function() {
+          return $ionicLoading.show({
+            template: 'Finding your location...'
+          });
+        })
         // wait for gmaps to be ready
         .then(function() {
           return uiGmapGoogleMapApi;
