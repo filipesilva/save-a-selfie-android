@@ -16,9 +16,9 @@
       var hideSheet = $ionicActionSheet.show({
         titleText: 'Select image source',
         buttons: [{
-          text: 'Take photo'
+          text: '<i class="icon ion-camera"></i> Take photo'
         }, {
-          text: 'Choose from existing'
+          text: '<i class="icon ion-images"></i> Choose from existing'
         }],
         cancelText: 'Cancel',
         buttonClicked: function(index) {
