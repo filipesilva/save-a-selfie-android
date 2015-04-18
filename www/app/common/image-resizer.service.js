@@ -17,11 +17,14 @@
     // ref: http://stackoverflow.com/a/20965997/2116927
     // This will 'load' the image to use in the next function.
     function resizeBase64(base64, width, height, format, quality) {
-      var img = new Image();
+      var ratio, img = new Image();
       img.src = base64;
-      // TODO: convert ratio properly
-      //console.log(img.width);
-      //console.log(img.height);
+      ratio = img.width / img.height;
+      if (ratio > 1) {
+        height = height / ratio;
+      } else {
+        width = width * ratio;
+      }
       return imageToDataUri(img, width, height, format, quality);
     }
 

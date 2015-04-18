@@ -58,7 +58,6 @@
         .then(function(imageData) {
           photo = "data:image/jpeg;base64," + imageData;
           thumb = imageResizer.resizeBase64(photo, 150, 150, 'jpeg', 1);
-          console.log(thumb);
         })
         .catch(function(err) {
           // error

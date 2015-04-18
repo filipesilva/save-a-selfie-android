@@ -48,6 +48,11 @@
   margin-right: auto;
   width: 182px;
 }
+.selfie-preview img {
+  display:block;
+  margin: auto;
+  margin-bottom: 2px;
+}
 .icon-preview {
   margin-top: 5px;
 }
