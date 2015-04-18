@@ -19,7 +19,7 @@
       var req = {
         method: 'GET',
         url: apiUrl +
-          '/wp-content/themes/magazine-child/getMapData.php',
+          '/wp/wp-content/themes/magazine-child/getMapData.php',
         transformResponse: [csvToArray, arrayToMarker]
       };
       return $http(req);

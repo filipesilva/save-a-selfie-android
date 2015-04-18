@@ -11,7 +11,8 @@
         url: '/info',
         views: {
           'tab-info': {
-            templateUrl: 'app/info/info.html'
+            templateUrl: 'app/info/info.html',
+            controller: 'Info as info'
           }
         }
       });

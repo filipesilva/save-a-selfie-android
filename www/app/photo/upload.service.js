@@ -46,7 +46,7 @@
             thumbnail: 'thumbnail'
           };
           return $http.post(
-            '/wp-content/themes/magazine-child/test.something', {}, {
+            '/wp/wp-content/themes/magazine-child/test.something', {}, {
               params: params
             });
         });
