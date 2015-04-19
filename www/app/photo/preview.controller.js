@@ -43,7 +43,7 @@
       photoEula.show()
         .then(uploadSelfie.post)
         .then(function() {
-          $state.go('tab.locate');
+          $state.go('tabs.locate');
         })
         .catch(function() {
           console.log('error uploading photo');

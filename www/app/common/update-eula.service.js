@@ -23,14 +23,12 @@
       } else if (eula === 'map') {
         type = 'map';
       }
-      var params = {
+      var data = {
         deviceID: uuid,
         EULAType: type
       };
       return $http.post(apiUrl +
-          '/wp/wp-content/themes/magazine-child/updateEULA.php', {}, {
-            params: params
-          })
+          '/wp/wp-content/themes/magazine-child/updateEULA.php', data)
         .catch(function() {
           console.log('error submitting eula');
         });

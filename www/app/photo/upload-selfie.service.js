@@ -37,7 +37,7 @@
           enableHighAccuracy: false
         })
         .then(function(position) {
-          var params = {
+          var data = {
             id: makeId(),
             typeOfObject: typeOfObject,
             latitude: position.coords.latitude,
@@ -51,9 +51,7 @@
               .uuid
           };
           return $http.post(apiUrl +
-            '/wp/wp-content/themes/magazine-child/iPhone.php', {}, {
-              params: params
-            });
+            '/wp/wp-content/themes/magazine-child/iPhone.php', data);
         });
     }
 
