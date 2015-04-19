@@ -1,21 +1,21 @@
 (function() {
   angular
     .module('save-a-selfie.photo')
-    .factory('upload', upload);
+    .factory('uploadSelfie', uploadSelfie);
 
-  upload.$inject = ['$http', '$cordovaGeolocation', 'apiUrl', 'selfie'];
+  uploadSelfie.$inject = ['$http', '$cordovaGeolocation', 'apiUrl', 'selfie'];
 
-  function upload($http, $cordovaGeolocation, apiUrl, selfie) {
+  function uploadSelfie($http, $cordovaGeolocation, apiUrl, selfie) {
 
     // members
     var service = {
-      addSelfie: addSelfie
+      post: post
     };
     return service;
 
     // functions
 
-    function addSelfie() {
+    function post() {
       var device = selfie.getDevice();
       var typeOfObject;
 

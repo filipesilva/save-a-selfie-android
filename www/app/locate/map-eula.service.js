@@ -3,11 +3,11 @@
 
   angular
     .module('save-a-selfie.locate')
-    .service('mapDisclaimer', mapDisclaimer);
+    .service('mapEula', mapEula);
 
-  mapDisclaimer.$inject = ['$q', '$window', '$ionicPopup', '$state'];
+  mapEula.$inject = ['$q', '$window', '$http', '$ionicPopup', 'updateEula'];
 
-  function mapDisclaimer($q, $window, $ionicPopup) {
+  function mapEula($q, $window, $http, $ionicPopup, updateEula) {
     var service = {
       show: show
     };
@@ -22,7 +22,7 @@
             title: 'Disclaimer',
             template: 'The information here is correct to the best of our knowledge, but its use is at your risk and discretion, with no liability to Save a Selfie, the developers or Google.'
           })
-          .then(function (res) {
+          .then(function(res) {
             if (!res) {
               return $q.reject();
             }
@@ -36,7 +36,9 @@
     }
 
     function saveAcceptance() {
-      $window.localStorage.setItem('mapDisclaimer', 'accepted');
+      updateEula.post('map').then(function () {
+        $window.localStorage.setItem('mapDisclaimer', 'accepted');
+      });
     }
   }
 })();

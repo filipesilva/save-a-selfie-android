@@ -3,11 +3,11 @@
 
   angular
     .module('save-a-selfie.photo')
-    .service('eula', eula);
+    .service('photoEula', photoEula);
 
-  eula.$inject = ['$q', '$window', '$ionicPopup', 'apiUrl'];
+  photoEula.$inject = ['$q', '$window', '$ionicPopup', 'apiUrl', 'updateEula'];
 
-  function eula($q, $window, $ionicPopup, apiUrl) {
+  function photoEula($q, $window, $ionicPopup, apiUrl, updateEula) {
     var service = {
       show: show
     };
@@ -24,7 +24,7 @@
             template: 'I accept the <a href="#" onclick="window.open(\'' +
               url + '\', \'_system\');">EULA for Save-a-Selfie</a>.'
           })
-          .then(function (res) {
+          .then(function(res) {
             if (!res) {
               return $q.reject();
             }
@@ -38,7 +38,9 @@
     }
 
     function saveAcceptance() {
-      $window.localStorage.setItem('eula', 'accepted');
+      updateEula.post('photo').then(function () {
+        $window.localStorage.setItem('eula', 'accepted');
+      });
     }
   }
 })();

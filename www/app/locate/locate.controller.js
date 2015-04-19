@@ -4,11 +4,11 @@
     .controller('LocateCtrl', locate);
 
   locate.$inject = ['$scope', '$q', '$ionicLoading', '$state',
-    '$cordovaGeolocation', 'uiGmapGoogleMapApi', 'markers', 'mapDisclaimer'
+    '$cordovaGeolocation', 'uiGmapGoogleMapApi', 'markers', 'mapEula'
   ];
 
   function locate($scope, $q, $ionicLoading, $state, $cordovaGeolocation,
-    uiGmapGoogleMapApi, markers, mapDisclaimer) {
+    uiGmapGoogleMapApi, markers, mapEula) {
     var vm = this;
 
     // members
@@ -82,7 +82,7 @@
     // TODO make it watch position?
     function activate() {
       //show loading message
-      mapDisclaimer.show()
+      mapEula.show()
         .catch(function() {
           $state.go('tabs.info');
           return $q.reject();

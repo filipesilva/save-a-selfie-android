@@ -3,14 +3,14 @@
     .module('save-a-selfie.photo')
     .controller('Preview', Preview);
 
-  Preview.$inject = ['$scope', '$state', 'selfie', 'upload', 'eula'];
+  Preview.$inject = ['$scope', '$state', 'selfie', 'uploadSelfie', 'photoEula'];
 
-  function Preview($scope, $state, selfie, upload, eula) {
+  function Preview($scope, $state, selfie, uploadSelfie, photoEula) {
     var vm = this;
 
     // members
     vm.activate = activate;
-    vm.uploadSelfie = uploadSelfie;
+    vm.upload = upload;
     vm.caption = '';
     vm.thumbSrc = '';
     vm.deviceIconSrc = '';
@@ -39,9 +39,9 @@
       }
     }
 
-    function uploadSelfie() {
-      eula.show()
-        .then(upload.addSelfie)
+    function upload() {
+      photoEula.show()
+        .then(uploadSelfie.post)
         .then(function() {
           $state.go('tab.locate');
         })
