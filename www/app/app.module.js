@@ -25,7 +25,7 @@
       if (window.Camera){
         Camera = window.Camera;
       } else {
-        console.warn('Cordova camera plugin not loaded!');
+        console.log('Cordova camera plugin not loaded!');
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required

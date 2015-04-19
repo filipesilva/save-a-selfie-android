@@ -3,9 +3,9 @@
     .module('save-a-selfie.common')
     .factory('selfie', selfie);
 
-  selfie.$inject = ['$cordovaCamera', 'imageResizer'];
+  selfie.$inject = ['$cordovaCamera', 'imageProcessor'];
 
-  function selfie($cordovaCamera, imageResizer) {
+  function selfie($cordovaCamera, imageProcessor) {
     var photo, thumb, caption, device;
 
     // members
@@ -56,8 +56,13 @@
     function saveSelfie(options) {
       return $cordovaCamera.getPicture(options)
         .then(function(imageData) {
-          photo = "data:image/jpeg;base64," + imageData;
-          thumb = imageResizer.resizeBase64(photo, 150, 150, 'jpeg', 1);
+          var cleanPhoto = "data:image/jpeg;base64," + imageData;
+          thumb = imageProcessor.resizeBase64(cleanPhoto, 150, 150,
+            'jpeg', 0.8);
+          return imageProcessor.addLogos(cleanPhoto, 'jpeg', 0.8);
+        })
+        .then(function(img) {
+          photo = img;
         })
         .catch(function() {
           console.log('error taking photo');
