@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('save-a-selfie.locate')
     .controller('LocateCtrl', locate);
@@ -45,8 +45,9 @@
                 x: 24,
                 y: 24
               },
-              url: 'img/user-location-marker.png'
-            }
+              url: 'img/user-location-marker.png',
+            },
+            clickable: false
           },
           coords: {
             latitude: initial.latitude,

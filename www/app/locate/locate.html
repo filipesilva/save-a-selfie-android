@@ -12,8 +12,7 @@
           coords="'coords'"
           icon="'icon'"
           options="'options'"
-          events="locate.map.markersEvents"
-          doCluster="'true'">
+          events="locate.map.markersEvents">
       </ui-gmap-markers>
       <ui-gmap-window show="locate.map.window.show"
           coords="locate.map.window.model.coords"
@@ -21,7 +20,6 @@
           closeclick="locate.map.window.closeClick()">
         <div>
           <img ng-src="{{ locate.map.window.model.thumb }}"
-              height="150"
               width="150" />
           <p class="marker-window-caption">
             {{ locate.map.window.model.caption }}
