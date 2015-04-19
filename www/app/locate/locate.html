@@ -2,7 +2,8 @@
   <ion-content class="map-container"
       data-tap-disabled="true">
     <ui-gmap-google-map center="locate.map.center"
-        zoom="locate.map.zoom">
+        zoom="locate.map.zoom"
+        ng-if='locate.showMap'>
       <ui-gmap-marker idKey="locate.map.user.id"
           coords="locate.map.user.coords"
           options="locate.map.user.options">

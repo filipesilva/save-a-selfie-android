@@ -12,6 +12,7 @@
     var vm = this;
 
     // members
+    vm.showMap = false;
     vm.activate = activate;
     vm.initialize = initialize;
 
@@ -29,6 +30,7 @@
       };
       vm.map = {
         zoom: 13,
+        refresh: false,
         center: {
           latitude: initial.latitude,
           longitude: initial.longitude
@@ -93,6 +95,7 @@
           });
         })
         .then(function() {
+          vm.showMap = false;
           // wait for gmaps to be ready
           return uiGmapGoogleMapApi;
         })
@@ -105,6 +108,7 @@
         })
         .then(function(position) {
           // update map
+          vm.showMap = true;
           vm.map.center = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
@@ -120,6 +124,7 @@
         })
         .then(function(response) {
           vm.map.markers = response.data;
+
         })
         .catch(function() {
           console.log('error during map display');
