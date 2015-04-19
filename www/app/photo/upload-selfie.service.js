@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('save-a-selfie.photo')
     .factory('uploadSelfie', uploadSelfie);
@@ -52,8 +52,22 @@
             deviceID: $cordovaDevice.getDevice()
               .uuid
           };
-          return $http.post(apiUrl +
-            '/wp/wp-content/themes/magazine-child/iPhone.php', data);
+          return $http({
+              method: 'POST',
+              url: apiUrl +
+                '/wp/wp-content/themes/magazine-child/iPhone.php',
+              data: data,
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              transformRequest: function(obj) {
+                var str = [];
+                for (var p in obj)
+                  str.push(encodeURIComponent(p) + "=" +
+                    encodeURIComponent(obj[p]));
+                return str.join("&");
+              },
+            });
         });
     }
 
