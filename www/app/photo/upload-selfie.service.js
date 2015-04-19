@@ -47,8 +47,9 @@
             location: '',
             user: '',
             caption: selfie.getCaption(),
-            image: selfie.getPhoto(),
-            thumbnail: selfie.getThumb(),
+            // remove the beginning of the dataURL
+            image: selfie.getPhoto().replace('data:image/jpeg;base64,', ''),
+            thumbnail: selfie.getThumb().replace('data:image/jpeg;base64,', ''),
             deviceID: $cordovaDevice.getDevice()
               .uuid
           };
