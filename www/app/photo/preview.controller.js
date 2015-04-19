@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+  
   angular
     .module('save-a-selfie.photo')
     .controller('Preview', Preview);

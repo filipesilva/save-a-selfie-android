@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   angular
     .module('save-a-selfie.common')
     .factory('imageProcessor', imageProcessor);
@@ -47,10 +49,10 @@
 
     function addLogos(base64, format, quality) {
       var logoPromises, img = new Image(),
-        canvas = $document[0].createElement('canvas');
+        canvas = $document[0].createElement('canvas'),
+        ctx = canvas.getContext('2d');
 
       img.src = base64;
-      ctx = canvas.getContext('2d');
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0, img.width, img.height);
