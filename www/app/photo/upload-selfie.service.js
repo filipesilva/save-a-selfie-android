@@ -3,9 +3,12 @@
     .module('save-a-selfie.photo')
     .factory('uploadSelfie', uploadSelfie);
 
-  uploadSelfie.$inject = ['$http', '$cordovaGeolocation', 'apiUrl', 'selfie'];
+  uploadSelfie.$inject = ['$http', '$filter', '$cordovaGeolocation',
+    '$cordovaDevice', 'apiUrl', 'selfie'
+  ];
 
-  function uploadSelfie($http, $cordovaGeolocation, apiUrl, selfie) {
+  function uploadSelfie($http, $filter, $cordovaGeolocation, $cordovaDevice,
+    apiUrl, selfie) {
 
     // members
     var service = {
@@ -35,7 +38,7 @@
         })
         .then(function(position) {
           var params = {
-            id: 'id',
+            id: makeId(),
             typeOfObject: typeOfObject,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
@@ -43,13 +46,26 @@
             user: '',
             caption: selfie.getCaption(),
             image: selfie.getPhoto(),
-            thumbnail: 'thumbnail'
+            thumbnail: selfie.getThumb(),
+            deviceID: $cordovaDevice.getDevice()
+              .uuid
           };
-          return $http.post(
-            '/wp/wp-content/themes/magazine-child/test.something', {}, {
+          return $http.post(apiUrl +
+            '/wp/wp-content/themes/magazine-child/iPhone.php', {}, {
               params: params
             });
         });
+    }
+
+    function makeId() {
+      var text = $filter('date')(new Date(), 'yyyyMMddHHmmss');
+      var possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for (var i = 0; i < 4; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
     }
   }
 })();
