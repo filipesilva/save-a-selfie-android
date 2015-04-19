@@ -47,7 +47,8 @@
               },
               url: 'img/user-location-marker.png',
             },
-            clickable: false
+            clickable: false,
+            zIndex: 9999
           },
           coords: {
             latitude: initial.latitude,
