@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('save-a-selfie.common')
     .factory('selfie', selfie);
@@ -33,8 +33,8 @@
         destinationType: Camera.DestinationType.DATA_URL,
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 400,
-        targetHeight: 400,
+        targetWidth: 600,
+        targetHeight: 600,
         correctOrientation: true,
         saveToPhotoAlbum: false,
         mediaType: Camera.MediaType.PICTURE
