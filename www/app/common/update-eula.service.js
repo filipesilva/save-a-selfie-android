@@ -45,7 +45,7 @@
           },
         })
         .catch(function() {
-          console.log('error submitting eula');
+          console.log('Error submitting EULA!');
         });
     }
   }
