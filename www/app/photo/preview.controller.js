@@ -1,13 +1,16 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('save-a-selfie.photo')
     .controller('Preview', Preview);
 
-  Preview.$inject = ['$scope', '$state', 'selfie', 'uploadSelfie', 'photoEula'];
+  Preview.$inject = ['$scope', '$state', '$ionicLoading', 'selfie',
+    'uploadSelfie', 'photoEula'
+  ];
 
-  function Preview($scope, $state, selfie, uploadSelfie, photoEula) {
+  function Preview($scope, $state, $ionicLoading, selfie,
+    uploadSelfie, photoEula) {
     var vm = this;
 
     // members
@@ -43,12 +46,20 @@
 
     function upload() {
       photoEula.show()
+        .then(function() {
+          return $ionicLoading.show({
+            template: 'Finding your location...'
+          });
+        })
         .then(uploadSelfie.post)
         .then(function() {
           $state.go('tabs.locate');
         })
         .catch(function() {
           console.log('error uploading photo');
+        })
+        .finally(function() {
+          $ionicLoading.hide();
         });
     }
   }

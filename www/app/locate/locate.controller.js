@@ -3,13 +3,13 @@
 
   angular
     .module('save-a-selfie.locate')
-    .controller('LocateCtrl', locate);
+    .controller('LocateCtrl', Locate);
 
-  locate.$inject = ['$scope', '$q', '$ionicLoading', '$state',
+  Locate.$inject = ['$scope', '$q', '$ionicLoading', '$state',
     '$cordovaGeolocation', 'uiGmapGoogleMapApi', 'markers', 'mapEula'
   ];
 
-  function locate($scope, $q, $ionicLoading, $state, $cordovaGeolocation,
+  function Locate($scope, $q, $ionicLoading, $state, $cordovaGeolocation,
     uiGmapGoogleMapApi, markers, mapEula) {
     var vm = this;
 
