@@ -48,7 +48,7 @@
       photoEula.show()
         .then(function() {
           return $ionicLoading.show({
-            template: 'Finding your location...'
+            template: 'Uploading photo...'
           });
         })
         .then(uploadSelfie.post)
